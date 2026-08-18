@@ -58,16 +58,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">প্রোডাক্টের নাম *</label>
-            <input type="text" id="title" required placeholder="যেমন: রেশমি কাচের চুড়ি" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <input type="text" id="title" required placeholder="যেমন: Silk Thread Glass Bangles" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">ক্যাটাগরি *</label>
             <select id="category" required class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm bg-white">
-              <option value="কাচের চুড়ি">কাচের চুড়ি (Glass Bangles)</option>
-              <option value="মেটাল চুড়ি">মেটাল চুড়ি (Metal Bangles)</option>
-              <option value="জুয়েলারি সেট">জুয়েলারি সেট (Jewelry Set)</option>
-              <option value="ব্রেসলেট">ব্রেসলেট (Bracelets)</option>
-              <option value="অন্যান্য">অন্যান্য (Other)</option>
+              <option value="Glass Bangles">Glass Bangles (কাচের চুড়ি)</option>
+              <option value="Metal Bangles">Metal Bangles (মেটাল চুড়ি)</option>
+              <option value="Jewelry Set">Jewelry Set (জুয়েলারি সেট)</option>
+              <option value="Bracelets">Bracelets (ব্রেসলেট)</option>
+              <option value="Other">Other (অন্যান্য)</option>
             </select>
           </div>
         </div>
@@ -97,7 +97,7 @@
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">সংক্ষিপ্ত বিবরণ *</label>
-            <input type="text" id="description" required placeholder="যেমন: প্রিমিয়াম কাচের রেশমি চুড়ি সেট" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <input type="text" id="description" required placeholder="যেমন: Premium handcrafted glass bangles" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
         </div>
 
@@ -233,7 +233,7 @@
           <img src="${firstImg}" class="w-16 h-16 object-cover rounded-lg border bg-white" onerror="this.src='https://via.placeholder.com/100'">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] bg-pink-100 text-pink-700 px-1.5 py-0.5 rounded font-bold">${item.category || 'অন্যান্য'}</span>
+              <span class="text-[10px] bg-pink-100 text-pink-700 px-1.5 py-0.5 rounded font-bold">${item.category || 'Other'}</span>
               ${item.stock === 'out_of_stock' ? '<span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold">Stock Out</span>' : '<span class="text-[10px] bg-green-100 text-green-600 px-1.5 py-0.5 rounded font-bold">In Stock</span>'}
             </div>
             <h3 class="font-bold text-gray-800 text-sm truncate mt-1">${item.title}</h3>
@@ -257,7 +257,7 @@
 
       document.getElementById('editProductId').value = id;
       document.getElementById('title').value = item.title || '';
-      document.getElementById('category').value = item.category || 'কাচের চুড়ি';
+      document.getElementById('category').value = item.category || 'Glass Bangles';
       document.getElementById('price').value = item.price || '';
       document.getElementById('discount').value = item.discount || '';
       document.getElementById('stock').value = item.stock || 'in_stock';
