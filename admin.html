@@ -3,107 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rupelia Admin - Secured Portal</title>
+  <title>Rupelia Admin - Advanced Manager</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen text-gray-800">
+<body class="bg-gray-100 min-h-screen text-gray-800 p-4 md:p-8">
 
-  <!-- ১. পাসওয়ার্ড লগইন মডাল -->
+  <!-- লগইন মডাল -->
   <div id="loginScreen" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center">
+    <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
       <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
         <i class="fa-solid fa-lock"></i>
       </div>
       <h2 class="text-2xl font-bold text-gray-800 mb-1">অ্যাডমিন লগইন</h2>
-      <p class="text-xs text-gray-500 mb-6">প্যানেলে প্রবেশ করতে সিকিউরিটি পাসওয়ার্ড দিন</p>
-      
+      <p class="text-xs text-gray-500 mb-6">সিকিউরিটি পাসওয়ার্ড দিন</p>
       <form id="loginForm" class="space-y-4">
-        <div>
-          <input 
-            type="password" 
-            id="adminPass" 
-            placeholder="পাসওয়ার্ড লিখুন..." 
-            required 
-            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-center text-lg tracking-widest"
-          >
-        </div>
-        <p id="loginError" class="text-red-500 text-xs hidden font-medium">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</p>
-        <button 
-          type="submit" 
-          class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 rounded-xl transition duration-200 shadow-md shadow-pink-200"
-        >
-          লগইন করুন
-        </button>
+        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-center text-lg">
+        <p id="loginError" class="text-red-500 text-xs hidden font-medium">ভুল পাসওয়ার্ড!</p>
+        <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 rounded-xl transition">লগইন করুন</button>
       </form>
     </div>
   </div>
 
-  <!-- ২. মূল অ্যাডমিন ড্যাশবোর্ড -->
-  <div id="adminDashboard" class="hidden max-w-4xl mx-auto p-4 md:p-8">
+  <!-- অ্যাডমিন কনটেন্ট -->
+  <div id="adminDashboard" class="hidden max-w-5xl mx-auto space-y-6">
     
-    <!-- হেডার বার -->
-    <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm mb-6 border">
+    <!-- হেডার -->
+    <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border">
       <div>
-        <h1 class="text-2xl font-bold text-pink-600">RUPELIA Dashboard</h1>
-        <p class="text-xs text-gray-500 mt-0.5">প্রোডাক্ট ম্যানেজমেন্ট ও প্রাইস আপডেট</p>
+        <h1 class="text-2xl font-bold text-pink-600">RUPELIA Admin Portal</h1>
+        <p class="text-xs text-gray-500">প্রোডাক্ট যোগ, এডিট এবং মাল্টিপল ইমেজ ম্যানেজমেন্ট</p>
       </div>
       <div class="flex items-center gap-2">
-        <a href="index.html" target="_blank" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-semibold transition border">
-          <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> শপ দেখুন
-        </a>
-        <button onclick="logout()" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg font-semibold transition border border-red-200">
-          <i class="fa-solid fa-right-from-bracket mr-1"></i> লগআউট
-        </button>
+        <a href="index.html" target="_blank" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-semibold border">শপ দেখুন</a>
+        <button onclick="logout()" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg font-semibold border border-red-200">লগআউট</button>
       </div>
     </div>
 
-    <!-- প্রোডাক্ট অ্যাড ফরম -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm border mb-8">
-      <h2 class="text-lg font-bold text-gray-800 mb-4 border-b pb-3 flex items-center gap-2">
-        <i class="fa-solid fa-plus-circle text-pink-600"></i> নতুন প্রোডাক্ট যুক্ত করুন
-      </h2>
+    <!-- প্রোডাক্ট ফর্ম -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border">
+      <div class="flex justify-between items-center mb-4 border-b pb-3">
+        <h2 id="formHeader" class="text-lg font-bold text-gray-800 flex items-center gap-2">
+          <i class="fa-solid fa-plus-circle text-pink-600"></i> নতুন প্রোডাক্ট যুক্ত করুন
+        </h2>
+        <button id="cancelEditBtn" onclick="resetFormState()" class="hidden text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded-lg font-bold">
+          এডিট বাতিল করুন
+        </button>
+      </div>
+
       <form id="productForm" class="space-y-4">
+        <input type="hidden" id="editProductId" value="">
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">প্রোডাক্টের নাম *</label>
-            <input type="text" id="title" required placeholder="যেমন: রেশমি কাচের চুড়ি" class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+            <input type="text" id="title" required placeholder="যেমন: রেশমি কাচের চুড়ি" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">মূল দাম (টাকা) *</label>
-            <input type="number" id="price" required placeholder="যেমন: 450" class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+            <input type="number" id="price" required placeholder="যেমন: 450" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">ডিসকাউন্ট (%) - অপশনাল</label>
-            <input type="number" id="discount" placeholder="যেমন: 15" class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+            <input type="number" id="discount" placeholder="যেমন: 15" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">ছবির সরাসরি লিংক (URL) *</label>
-            <input type="url" id="image" required placeholder="https://i.ibb.co/..." class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">বিবরণ ও সাইজ *</label>
+            <input type="text" id="description" required placeholder="যেমন: প্রিমিয়াম কোয়ালিটি, সাইজ: 2.4, 2.6" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
           </div>
         </div>
 
+        <!-- মাল্টিপল ছবির লিংক ইনপুট -->
         <div>
-          <label class="block text-xs font-semibold text-gray-600 mb-1">বিবরণ ও সাইজ *</label>
-          <textarea id="description" required rows="2" placeholder="যেমন: প্রিমিয়াম কোয়ালিটি, সাইজ: 2.4, 2.6" class="w-full p-2.5 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm"></textarea>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">
+            ছবির সরাসরি লিংকসমূহ (প্রতি লাইনে ১টি করে লিংক দিন) *
+          </label>
+          <textarea id="images" required rows="4" placeholder="https://i.ibb.co/image1.jpg&#10;https://i.ibb.co/image2.jpg&#10;https://i.ibb.co/image3.jpg" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm font-mono"></textarea>
+          <p class="text-[11px] text-gray-400 mt-1">💡 যতগুলো ইচ্ছা ছবি দিতে পারেন। প্রতি লাইনে একটি করে ছবির URL পেস্ট করুন। প্রথম ছবিটি কভার ফটো হিসেবে থাকবে।</p>
         </div>
 
-        <button type="submit" id="saveBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl transition duration-200 shadow-md shadow-pink-200">
+        <button type="submit" id="saveBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md shadow-pink-200">
           প্রোডাক্ট সেভ করুন
         </button>
       </form>
     </div>
 
-    <!-- বর্তমান প্রোডাক্ট তালিকা ও ম্যানেজমেন্ট -->
+    <!-- বর্তমান প্রোডাক্ট তালিকা -->
     <div class="bg-white p-6 rounded-2xl shadow-sm border">
       <h2 class="text-lg font-bold text-gray-800 mb-4 border-b pb-3 flex items-center gap-2">
-        <i class="fa-solid fa-boxes-stacked text-pink-600"></i> বর্তমান প্রোডাক্ট তালিকা
+        <i class="fa-solid fa-boxes-stacked text-pink-600"></i> বর্তমান প্রোডাক্টসমূহ
       </h2>
       <div id="productList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <p class="text-gray-400 text-sm">লোড হচ্ছে...</p>
@@ -113,18 +106,15 @@
   </div>
 
   <script>
-    // --- Security Configuration ---
-    const ADMIN_PASSWORD = "rupelia123"; // আপনার পাসওয়ার্ড
+    const ADMIN_PASSWORD = "rupelia123";
 
-    // Session Check
     if (sessionStorage.getItem('rupelia_admin_auth') === 'true') {
       unlockDashboard();
     }
 
     document.getElementById('loginForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      const enteredPass = document.getElementById('adminPass').value;
-      if (enteredPass === ADMIN_PASSWORD) {
+      if (document.getElementById('adminPass').value === ADMIN_PASSWORD) {
         sessionStorage.setItem('rupelia_admin_auth', 'true');
         unlockDashboard();
       } else {
@@ -142,7 +132,6 @@
       location.reload();
     }
 
-    // --- Firebase Configuration ---
     const firebaseConfig = {
       apiKey: "AIzaSyCswBk5Hrkzmb4c26DiDKYWzw168bo6Ijo",
       authDomain: "if-ibrahim.firebaseapp.com",
@@ -157,46 +146,77 @@
     const db = firebase.database();
     const productsRef = db.ref('products');
 
-    // প্রোডাক্ট যোগ করা
+    let productsDataStore = {};
+
+    // প্রোডাক্ট সেভ বা আপডেট
     document.getElementById('productForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const title = document.getElementById('title').value;
+      const editId = document.getElementById('editProductId').value;
+      const title = document.getElementById('title').value.trim();
       const price = parseFloat(document.getElementById('price').value);
       const discount = parseInt(document.getElementById('discount').value || 0);
-      const image = document.getElementById('image').value;
-      const description = document.getElementById('description').value;
+      const description = document.getElementById('description').value.trim();
+      
+      // একাধিক ছবির লিংক অ্যারে বানানো
+      const rawImages = document.getElementById('images').value.trim().split('\n');
+      const images = rawImages.map(url => url.trim()).filter(url => url.length > 0);
 
-      const newProductRef = productsRef.push();
-      newProductRef.set({
-        title: title,
-        price: price,
-        discount: discount,
-        image: image,
-        description: description,
-        createdAt: Date.now()
-      }).then(() => {
-        alert('প্রোডাক্ট সফলভাবে যুক্ত করা হয়েছে!');
-        document.getElementById('productForm').reset();
-      });
-    });
-
-    // প্রোডাক্ট রেন্ডার ও ডিলিট/ম্যানেজ
-    productsRef.on('value', (snapshot) => {
-      const productList = document.getElementById('productList');
-      productList.innerHTML = '';
-      const data = snapshot.val();
-
-      if (!data) {
-        productList.innerHTML = '<p class="text-gray-400 text-sm">কোনো প্রোডাক্ট যোগ করা হয়নি।</p>';
+      if (images.length === 0) {
+        alert('কমপক্ষে একটি ছবির লিংক দিন!');
         return;
       }
 
-      Object.keys(data).forEach((id) => {
-        const item = data[id];
+      const productPayload = {
+        title,
+        price,
+        discount,
+        description,
+        image: images[0], // ব্যাকওয়ার্ড কম্প্যাটিবিলিটির জন্য
+        images: images,
+        updatedAt: Date.now()
+      };
+
+      if (editId) {
+        // আপডেট
+        productsRef.child(editId).update(productPayload).then(() => {
+          alert('প্রোডাক্ট সফলভাবে আপডেট করা হয়েছে!');
+          resetFormState();
+        });
+      } else {
+        // নতুন যোগ
+        productPayload.createdAt = Date.now();
+        productsRef.push().set(productPayload).then(() => {
+          alert('নতুন প্রোডাক্ট যোগ করা হয়েছে!');
+          resetFormState();
+        });
+      }
+    });
+
+    // ডাটাবেজ থেকে লোড
+    productsRef.on('value', (snapshot) => {
+      const productList = document.getElementById('productList');
+      productList.innerHTML = '';
+      productsDataStore = snapshot.val() || {};
+
+      if (!snapshot.exists()) {
+        productList.innerHTML = '<p class="text-gray-400 text-sm">কোনো প্রোডাক্ট নেই।</p>';
+        return;
+      }
+
+      Object.keys(productsDataStore).forEach((id) => {
+        const item = productsDataStore[id];
+        const imgList = item.images || (item.image ? [item.image] : []);
+        const firstImg = imgList[0] || 'https://via.placeholder.com/100';
+
         const card = document.createElement('div');
         card.className = "border rounded-xl p-3 flex gap-3 items-center bg-gray-50 hover:bg-gray-100 transition";
         card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-lg border bg-white" onerror="this.src='https://via.placeholder.com/100'">
+          <div class="relative">
+            <img src="${firstImg}" class="w-16 h-16 object-cover rounded-lg border bg-white" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="absolute -bottom-1 -right-1 bg-gray-800 text-white text-[10px] px-1.5 py-0.2 rounded-full font-bold">
+              📷 ${imgList.length}
+            </span>
+          </div>
           <div class="flex-1 min-w-0">
             <h3 class="font-bold text-gray-800 text-sm truncate">${item.title}</h3>
             <p class="text-xs text-gray-500 truncate">${item.description || ''}</p>
@@ -205,17 +225,54 @@
               ${item.discount > 0 ? `<span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold">${item.discount}% OFF</span>` : ''}
             </div>
           </div>
-          <button onclick="deleteProduct('${id}')" title="মুছে ফেলুন" class="text-red-500 hover:text-red-700 p-2 text-sm">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
+          <div class="flex items-center gap-1">
+            <button onclick="startEdit('${id}')" title="এডিট করুন" class="text-blue-600 hover:bg-blue-100 p-2 rounded-lg text-sm">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button onclick="deleteProduct('${id}')" title="মুছে ফেলুন" class="text-red-500 hover:bg-red-100 p-2 rounded-lg text-sm">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
         `;
         productList.appendChild(card);
       });
     });
 
-    // প্রোডাক্ট ডিলিট ফাংশন
+    // এডিট মোড চালু
+    window.startEdit = function(id) {
+      const item = productsDataStore[id];
+      if (!item) return;
+
+      document.getElementById('editProductId').value = id;
+      document.getElementById('title').value = item.title || '';
+      document.getElementById('price').value = item.price || '';
+      document.getElementById('discount').value = item.discount || '';
+      document.getElementById('description').value = item.description || '';
+
+      const imgList = item.images || (item.image ? [item.image] : []);
+      document.getElementById('images').value = imgList.join('\n');
+
+      document.getElementById('formHeader').innerHTML = '<i class="fa-solid fa-pen-to-square text-blue-600"></i> প্রোডাক্ট এডিট করুন';
+      document.getElementById('saveBtn').textContent = 'আপডেট সংরক্ষণ করুন';
+      document.getElementById('saveBtn').className = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition';
+      document.getElementById('cancelEditBtn').classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ফর্ম রিসেট
+    window.resetFormState = function() {
+      document.getElementById('productForm').reset();
+      document.getElementById('editProductId').value = '';
+      document.getElementById('formHeader').innerHTML = '<i class="fa-solid fa-plus-circle text-pink-600"></i> নতুন প্রোডাক্ট যুক্ত করুন';
+      document.getElementById('saveBtn').textContent = 'প্রোডাক্ট সেভ করুন';
+      document.getElementById('saveBtn').className = 'bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md shadow-pink-200';
+      document.getElementById('cancelEditBtn').classList.add('hidden');
+    };
+
+    // ডিলিট
     window.deleteProduct = function(id) {
-      if(confirm('আপনি কি নিশ্চিত যে এই প্রোডাক্টটি সম্পূর্ণ মুছে ফেলতে চান?')) {
+      if(confirm('আপনি কি নিশ্চিত এই প্রোডাক্টটি মুছে ফেলতে চান?')) {
         productsRef.child(id).remove();
       }
     };
