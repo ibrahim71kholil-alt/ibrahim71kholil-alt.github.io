@@ -6,8 +6,13 @@
   <title>Rupelia Elegance | Exclusive Jewelry</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
 
@@ -16,11 +21,13 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       <a href="index.html" class="text-2xl md:text-3xl font-serif font-bold text-pink-600 tracking-tight">RUPELIA</a>
       
+      <!-- Search Input -->
       <div class="order-3 md:order-2 w-full md:w-80 relative">
-        <input type="text" id="searchInput" placeholder="Search your dream jewelry..." class="w-full pl-10 pr-4 py-2 border rounded-full text-sm bg-gray-50 focus:bg-white outline-none focus:ring-2 focus:ring-pink-500">
+        <input type="text" id="searchInput" placeholder="Search bangles, jewelry..." class="w-full pl-10 pr-4 py-2 border rounded-full text-sm bg-gray-50 focus:bg-white outline-none focus:ring-2 focus:ring-pink-500">
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-gray-400 text-sm"></i>
       </div>
 
+      <!-- Action Buttons -->
       <div class="order-2 md:order-3 flex items-center gap-2">
         <button id="langToggleBtn" onclick="toggleLanguage()" class="text-xs md:text-sm font-bold bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-full border">
           <i class="fa-solid fa-globe text-pink-600 mr-1"></i><span id="langBtnText">বাংলা</span>
@@ -33,13 +40,13 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-pink-500 to-rose-400 text-white py-12 px-4 text-center">
-    <h2 id="heroTitle" class="text-3xl md:text-4xl font-serif font-bold mb-2">Elegance Redefined</h2>
-    <p id="heroSubtitle" class="text-pink-100 max-w-xl mx-auto text-xs md:text-sm">Adorn yourself with our timeless collection of handcrafted bangles and exquisite jewelry, curated just for you.</p>
+  <section class="bg-gradient-to-r from-pink-500 to-rose-400 text-white py-10 px-4 text-center">
+    <h2 id="heroTitle" class="text-2xl md:text-4xl font-serif font-bold mb-2">Elegance Redefined</h2>
+    <p id="heroSubtitle" class="text-pink-100 max-w-xl mx-auto text-xs md:text-sm">Adorn yourself with our timeless collection of handcrafted bangles and exquisite jewelry.</p>
   </section>
 
-  <!-- Products Grid -->
-  <main class="max-w-6xl mx-auto px-4 py-10 flex-1 w-full">
+  <!-- Products Section -->
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
     <div class="flex justify-between items-center mb-6">
       <h3 id="sectionTitle" class="text-xl md:text-2xl font-bold text-gray-800">Our Collection</h3>
       <span id="productCount" class="text-xs text-gray-500 bg-gray-200 px-2.5 py-1 rounded-full font-medium"></span>
@@ -47,31 +54,60 @@
     <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
   </main>
 
-  <!-- প্রোডাক্ট ইমেজ গ্যালারি মডাল -->
-  <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-4 relative overflow-hidden flex flex-col max-h-[90vh]">
-      <button onclick="closeGallery()" class="absolute top-3 right-3 text-gray-600 hover:text-black text-xl font-bold z-10 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+  <!-- Fullscreen Product Details Modal / Single Page View -->
+  <div id="productDetailsModal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-2 md:p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[92vh] overflow-y-auto relative shadow-2xl flex flex-col">
+      
+      <!-- Close Button -->
+      <button onclick="closeProductDetails()" class="absolute top-4 right-4 z-20 bg-white/80 hover:bg-white text-gray-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md font-bold transition">
         ✕
       </button>
 
-      <!-- মেইন ইমেজ -->
-      <div class="w-full h-64 md:h-80 bg-gray-100 rounded-xl overflow-hidden mb-3 flex items-center justify-center">
-        <img id="modalMainImg" src="" class="w-full h-full object-contain">
-      </div>
-
-      <!-- থাম্বনেইল স্ট্রিপ -->
-      <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-2 mb-3"></div>
-
-      <!-- ডিটেইলস ও অর্ডার বাটন -->
-      <div class="border-t pt-3 flex justify-between items-center">
-        <div>
-          <h4 id="modalTitle" class="font-bold text-sm md:text-base text-gray-800 truncate"></h4>
-          <div id="modalPrice" class="text-pink-600 font-extrabold text-lg"></div>
+      <!-- Horizontal Image Carousel / Slider -->
+      <div class="relative w-full bg-gray-100 rounded-t-3xl overflow-hidden">
+        <div id="carouselSlider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth w-full h-72 md:h-96">
+          <!-- Images will be injected here -->
         </div>
-        <a id="modalOrderBtn" href="#" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1">
-          <i class="fab fa-whatsapp"></i> <span id="modalOrderText">Order Now</span>
-        </a>
+
+        <!-- Carousel Indicators -->
+        <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm"></div>
+
+        <!-- Hint for Multiple Images -->
+        <div id="scrollHint" class="absolute top-4 left-4 bg-black/60 text-white text-[11px] px-2.5 py-1 rounded-full flex items-center gap-1.5 pointer-events-none">
+          <i class="fa-solid fa-arrows-left-right"></i> <span id="swipeText">Swipe images</span>
+        </div>
       </div>
+
+      <!-- Product Meta & Details -->
+      <div class="p-5 md:p-6 space-y-4 flex-1 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span id="modalDiscountBadge" class="bg-red-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-lg hidden"></span>
+            <span class="text-xs text-gray-400 uppercase tracking-wider font-semibold">RUPELIA EXCLUSIVE</span>
+          </div>
+
+          <h2 id="modalTitle" class="text-xl md:text-2xl font-bold text-gray-900 leading-snug"></h2>
+          
+          <div class="flex items-baseline gap-3 my-3">
+            <span id="modalCurrentPrice" class="text-2xl font-extrabold text-pink-600"></span>
+            <span id="modalOldPrice" class="text-gray-400 line-through text-base hidden"></span>
+          </div>
+
+          <div class="border-t pt-3">
+            <h4 class="text-xs font-bold text-gray-700 uppercase tracking-wide mb-1" id="descLabel">Description & Details</h4>
+            <p id="modalDescription" class="text-sm text-gray-600 whitespace-pre-line leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- WhatsApp Order Button -->
+        <div class="pt-4 border-t mt-4">
+          <a id="modalOrderLink" href="#" target="_blank" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 text-base transition shadow-lg shadow-pink-200">
+            <i class="fab fa-whatsapp text-xl"></i>
+            <span id="modalOrderBtnText">Order via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -105,30 +141,40 @@
         orderBtn: "Order",
         waBtn: "Support",
         langBtn: "বাংলা",
-        photosBadge: "Photos"
+        photosBadge: "Photos",
+        swipeText: "Swipe images",
+        descLabel: "Description & Details",
+        modalOrderText: "Order via WhatsApp"
       },
       bn: {
         heroTitle: "রূপের আভিজাত্যে রূপেলিয়া",
         heroSubtitle: "ঐতিহ্য আর আধুনিকতার মেলবন্ধনে সাজিয়ে তুলুন নিজেকে, আমাদের এক্সক্লুসিভ কালেকশনে।",
         sectionTitle: "আমাদের কালেকশন",
-        orderBtn: "অর্ডার করুন",
+        orderBtn: "অর্ডার",
         waBtn: "সাহায্য",
         langBtn: "English",
-        photosBadge: "ছবি"
+        photosBadge: "ছবি",
+        swipeText: "ছবি দেখতে স্ক্রোল করুন",
+        descLabel: "বিবরণ ও সাইজ",
+        modalOrderText: "হোয়াটসঅ্যাপে অর্ডার করুন"
       }
     };
 
     function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'bn' : 'en';
+      currentLang = (currentLang === 'en') ? 'bn' : 'en';
       updateUI();
     }
 
     function updateUI() {
-      document.getElementById('heroTitle').innerText = trans[currentLang].heroTitle;
-      document.getElementById('heroSubtitle').innerText = trans[currentLang].heroSubtitle;
-      document.getElementById('sectionTitle').innerText = trans[currentLang].sectionTitle;
-      document.getElementById('waBtn').innerText = trans[currentLang].waBtn;
-      document.getElementById('langBtnText').innerText = trans[currentLang].langBtn;
+      const t = trans[currentLang];
+      document.getElementById('heroTitle').innerText = t.heroTitle;
+      document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
+      document.getElementById('sectionTitle').innerText = t.sectionTitle;
+      document.getElementById('waBtn').innerText = t.waBtn;
+      document.getElementById('langBtnText').innerText = t.langBtn;
+      document.getElementById('swipeText').innerText = t.swipeText;
+      document.getElementById('descLabel').innerText = t.descLabel;
+      document.getElementById('modalOrderBtnText').innerText = t.modalOrderText;
       render(getFiltered());
     }
 
@@ -156,7 +202,7 @@
       grid.innerHTML = '';
 
       if (products.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">কোনো প্রোডাক্ট পাওয়া যায়নি।</p>';
+        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">No products found.</p>';
         return;
       }
 
@@ -166,19 +212,18 @@
         const imgList = p.images || (p.image ? [p.image] : ['https://via.placeholder.com/300']);
         const coverImg = imgList[0];
 
-        const waLink = `https://wa.me/8801619626988?text=${encodeURIComponent(`Hello, I want to order:\nProduct: ${p.title}\nPrice: ৳${newPrice}\nDetails: ${p.description || ''}`)}`;
-
         const card = document.createElement('div');
-        card.className = "bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition flex flex-col justify-between";
+        card.className = "bg-white rounded-2xl shadow-sm border overflow-hidden hover:shadow-md transition flex flex-col justify-between cursor-pointer group";
+        
         card.innerHTML = `
-          <div>
-            <div class="relative cursor-pointer group" onclick="openGallery('${p.id}')">
+          <div onclick="openProductDetails('${p.id}')">
+            <div class="relative overflow-hidden">
               ${disc > 0 ? `<div class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">${disc}% OFF</div>` : ''}
               <img src="${coverImg}" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300'">
-              ${imgList.length > 1 ? `<div class="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1"><i class="fa-solid fa-images"></i> ${imgList.length} ${trans[currentLang].photosBadge}</div>` : ''}
+              ${imgList.length > 1 ? `<div class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1"><i class="fa-solid fa-images"></i> ${imgList.length}</div>` : ''}
             </div>
             <div class="p-3">
-              <h3 class="font-bold text-gray-800 text-sm truncate cursor-pointer hover:text-pink-600" onclick="openGallery('${p.id}')">${p.title}</h3>
+              <h3 class="font-bold text-gray-800 text-sm truncate group-hover:text-pink-600 transition">${p.title}</h3>
               <p class="text-xs text-gray-500 mt-1 line-clamp-2">${p.description || ''}</p>
             </div>
           </div>
@@ -187,51 +232,90 @@
               ${disc > 0 ? `<span class="text-gray-400 line-through text-[10px] block">৳${p.price}</span>` : ''}
               <span class="text-pink-600 font-extrabold text-sm md:text-base">৳${newPrice}</span>
             </div>
-            <a href="${waLink}" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+            <button onclick="openProductDetails('${p.id}')" class="bg-pink-600 hover:bg-pink-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
               ${trans[currentLang].orderBtn}
-            </a>
+            </button>
           </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    // গ্যালারি ভিউয়ার ফাংশন
-    window.openGallery = function(productId) {
-      const product = allProducts.find(p => p.id === productId);
-      if (!product) return;
+    // প্রোডাক্ট বিস্তারিত ভিউ ও সাইড স্ক্রোল স্লাইডার
+    window.openProductDetails = function(id) {
+      const item = allProducts.find(p => p.id === id);
+      if (!item) return;
 
-      const imgList = product.images || (product.image ? [product.image] : ['https://via.placeholder.com/300']);
-      const disc = parseInt(product.discount || 0);
-      const newPrice = disc > 0 ? Math.round(product.price - (product.price * disc / 100)) : product.price;
+      const imgList = item.images || (item.image ? [item.image] : ['https://via.placeholder.com/400']);
+      const disc = parseInt(item.discount || 0);
+      const newPrice = disc > 0 ? Math.round(item.price - (item.price * disc / 100)) : item.price;
 
-      document.getElementById('modalTitle').textContent = product.title;
-      document.getElementById('modalPrice').textContent = `৳${newPrice}`;
-      document.getElementById('modalOrderBtn').href = `https://wa.me/8801619626988?text=${encodeURIComponent(`Hello, I want to order:\nProduct: ${product.title}\nPrice: ৳${newPrice}\nDetails: ${product.description || ''}`)}`;
-      
-      const mainImg = document.getElementById('modalMainImg');
-      mainImg.src = imgList[0];
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalDescription').textContent = item.description || '';
+      document.getElementById('modalCurrentPrice').textContent = `৳${newPrice}`;
 
-      const thumbContainer = document.getElementById('modalThumbnails');
-      thumbContainer.innerHTML = '';
+      // ডিসকাউন্ট ব্যাজ ও পুরনো দাম হ্যান্ডলিং
+      const discBadge = document.getElementById('modalDiscountBadge');
+      const oldPrice = document.getElementById('modalOldPrice');
+      if (disc > 0) {
+        discBadge.textContent = `${disc}% OFF`;
+        discBadge.classList.remove('hidden');
+        oldPrice.textContent = `৳${item.price}`;
+        oldPrice.classList.remove('hidden');
+      } else {
+        discBadge.classList.add('hidden');
+        oldPrice.classList.add('hidden');
+      }
 
-      imgList.forEach((url, index) => {
-        const thumb = document.createElement('img');
-        thumb.src = url;
-        thumb.className = `w-14 h-14 object-cover rounded-lg border-2 cursor-pointer flex-shrink-0 ${index === 0 ? 'border-pink-600' : 'border-transparent'}`;
-        thumb.onclick = () => {
-          mainImg.src = url;
-          document.querySelectorAll('#modalThumbnails img').forEach(el => el.classList.remove('border-pink-600'));
-          thumb.classList.add('border-pink-600');
-        };
-        thumbContainer.appendChild(thumb);
+      // ইমেজ ক্যারোসেল / সাইড স্ক্রোল প্রস্তুত করা
+      const slider = document.getElementById('carouselSlider');
+      const dots = document.getElementById('carouselDots');
+      const scrollHint = document.getElementById('scrollHint');
+      slider.innerHTML = '';
+      dots.innerHTML = '';
+
+      if (imgList.length > 1) {
+        scrollHint.classList.remove('hidden');
+      } else {
+        scrollHint.classList.add('hidden');
+      }
+
+      imgList.forEach((url, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'w-full h-full flex-shrink-0 snap-center flex items-center justify-center bg-gray-100';
+        slide.innerHTML = `<img src="${url}" class="w-full h-full object-contain" onerror="this.src='https://via.placeholder.com/400'">`;
+        slider.appendChild(slide);
+
+        if (imgList.length > 1) {
+          const dot = document.createElement('div');
+          dot.className = `w-2 h-2 rounded-full transition-all ${i === 0 ? 'bg-white w-4' : 'bg-white/50'}`;
+          dots.appendChild(dot);
+        }
       });
 
-      document.getElementById('galleryModal').classList.remove('hidden');
+      // স্ক্রোল করলে ডট আপডেট
+      slider.onscroll = () => {
+        const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+        Array.from(dots.children).forEach((dot, i) => {
+          if (i === index) {
+            dot.className = 'w-4 h-2 bg-white rounded-full transition-all';
+          } else {
+            dot.className = 'w-2 h-2 bg-white/50 rounded-full transition-all';
+          }
+        });
+      };
+
+      // WhatsApp লিঙ্ক
+      const msg = `Hello Rupelia, I would like to order:\n\n*Product:* ${item.title}\n*Price:* ৳${newPrice}\n*Details:* ${item.description || ''}`;
+      document.getElementById('modalOrderLink').href = `https://wa.me/8801619626988?text=${encodeURIComponent(msg)}`;
+
+      document.getElementById('productDetailsModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
     };
 
-    window.closeGallery = function() {
-      document.getElementById('galleryModal').classList.add('hidden');
+    window.closeProductDetails = function() {
+      document.getElementById('productDetailsModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
     };
   </script>
 </body>
