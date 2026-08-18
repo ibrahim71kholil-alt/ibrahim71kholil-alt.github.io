@@ -37,18 +37,18 @@
     </div>
   </header>
 
-  <!-- হিরো ব্যানার স্লাইডার -->
+  <!-- হিরো ব্যানার -->
   <section class="max-w-6xl mx-auto px-4 pt-4 w-full">
-    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-pink-600 to-rose-400 text-white p-8 md:p-12 shadow-lg flex flex-col justify-center min-h-[220px]">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-pink-600 to-rose-400 text-white p-8 md:p-12 shadow-lg flex flex-col justify-center min-h-[200px]">
       <span class="inline-block bg-white/20 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2 w-max">NEW COLLECTION 2026</span>
       <h2 id="heroTitle" class="text-2xl md:text-4xl font-serif font-bold mb-2">Elegance Redefined</h2>
       <p id="heroSubtitle" class="text-pink-100 max-w-xl text-xs md:text-sm leading-relaxed">Adorn yourself with our timeless collection of handcrafted bangles and exquisite jewelry.</p>
     </div>
   </section>
 
-  <!-- ট্রাস্ট ও সার্ভিস ব্যাজ -->
+  <!-- ট্রাস্ট ও সার্ভিস ব্যাজ (৩টি প্রিমিয়াম ব্যাজ) -->
   <section class="max-w-6xl mx-auto px-4 py-6 w-full">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
       <div class="bg-white p-3.5 rounded-2xl border flex items-center gap-3 shadow-sm">
         <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg"><i class="fa-solid fa-truck-fast"></i></div>
         <div>
@@ -70,25 +70,18 @@
           <p class="text-[10px] text-gray-500" id="tb3_sub">Finest craftsmanship</p>
         </div>
       </div>
-      <div class="bg-white p-3.5 rounded-2xl border flex items-center gap-3 shadow-sm">
-        <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg"><i class="fa-solid fa-headset"></i></div>
-        <div>
-          <h4 class="font-bold text-xs" id="tb4_title">WhatsApp Help</h4>
-          <p class="text-[10px] text-gray-500" id="tb4_sub">24/7 dedicated support</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ক্যাটাগরি ফিল্টার চিপস -->
   <section class="max-w-6xl mx-auto px-4 w-full">
     <div class="flex gap-2 overflow-x-auto no-scrollbar py-2" id="categoryChips">
-      <button onclick="filterCategory('All')" class="cat-btn active bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">All Items</button>
-      <button onclick="filterCategory('কাচের চুড়ি')" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">কাচের চুড়ি</button>
-      <button onclick="filterCategory('মেটাল চুড়ি')" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">মেটাল চুড়ি</button>
-      <button onclick="filterCategory('জুয়েলারি সেট')" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">জুয়েলারি সেট</button>
-      <button onclick="filterCategory('ব্রেসলেট')" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">ব্রেসলেট</button>
-      <button onclick="filterCategory('অন্যান্য')" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">অন্যান্য</button>
+      <button onclick="filterCategory('All')" data-cat="All" class="cat-btn active bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">All Items</button>
+      <button onclick="filterCategory('Glass Bangles')" data-cat="Glass Bangles" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">Glass Bangles</button>
+      <button onclick="filterCategory('Metal Bangles')" data-cat="Metal Bangles" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">Metal Bangles</button>
+      <button onclick="filterCategory('Jewelry Set')" data-cat="Jewelry Set" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">Jewelry Set</button>
+      <button onclick="filterCategory('Bracelets')" data-cat="Bracelets" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">Bracelets</button>
+      <button onclick="filterCategory('Other')" data-cat="Other" class="cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">Other</button>
     </div>
   </section>
 
@@ -100,30 +93,6 @@
     </div>
     <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"></div>
   </main>
-
-  <!-- কাস্টমার রিভিউ সেকশন -->
-  <section class="bg-white border-y py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-xl md:text-2xl font-bold text-center text-gray-800 mb-8" id="revHeading">Customer Reviews & Feedback</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gray-50 p-5 rounded-2xl border">
-          <div class="flex text-amber-400 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-xs text-gray-600 italic">"চুড়িগুলোর ফিনিশিং এবং কোয়ালিটি অনেক প্রিমিয়াম। ছবির চেয়ে বাস্তবে আরও সুন্দর!"</p>
-          <h5 class="text-xs font-bold text-gray-800 mt-3">— সাদিয়া আফরিন (ঢাকা)</h5>
-        </div>
-        <div class="bg-gray-50 p-5 rounded-2xl border">
-          <div class="flex text-amber-400 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-xs text-gray-600 italic">"খুব দ্রুত ডেলিভারি পেয়েছি। প্যাকেজিং খুবই সুরক্ষিত ছিল। ধন্যবাদ রূপেলিয়া।"</p>
-          <h5 class="text-xs font-bold text-gray-800 mt-3">— নুসরাত জাহান (চট্টগ্রাম)</h5>
-        </div>
-        <div class="bg-gray-50 p-5 rounded-2xl border">
-          <div class="flex text-amber-400 text-sm mb-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-          <p class="text-xs text-gray-600 italic">"সাইজ নিয়ে কনফিউজড ছিলাম, হোয়াটসঅ্যাপে খুব ভালো গাইড করেছে। পারফেক্ট সাইজ!"</p>
-          <h5 class="text-xs font-bold text-gray-800 mt-3">— সুমাইয়া হক (সিলেট)</h5>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- প্রোডাক্ট ডিটেইলস ও ডিরেক্ট অর্ডার মডাল -->
   <div id="productDetailsModal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-2 md:p-4 overflow-y-auto">
@@ -163,9 +132,9 @@
         <!-- সরাসরি অর্ডার ফর্ম -->
         <div class="border-t pt-4 space-y-2">
           <h4 class="text-xs font-bold text-gray-800 uppercase tracking-wider" id="formHeaderTitle">Fast WhatsApp Checkout</h4>
-          <input type="text" id="custName" placeholder="আপনার নাম (Customer Name)" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500">
-          <input type="tel" id="custPhone" placeholder="মোবাইল নাম্বার (Phone Number)" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500">
-          <textarea id="custAddress" rows="2" placeholder="ডেলিভারি ঠিকানা (Full Address & City)" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+          <input type="text" id="custName" placeholder="Customer Name" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500">
+          <input type="tel" id="custPhone" placeholder="Phone Number" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500">
+          <textarea id="custAddress" rows="2" placeholder="Full Delivery Address" class="w-full p-2.5 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-pink-500"></textarea>
 
           <button onclick="submitDirectOrder()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-pink-200">
             <i class="fab fa-whatsapp text-lg"></i>
@@ -220,11 +189,20 @@
         tb1_title: "Fast Delivery", tb1_sub: "All over Bangladesh",
         tb2_title: "Cash On Delivery", tb2_sub: "Pay after checking",
         tb3_title: "100% Premium", tb3_sub: "Finest craftsmanship",
-        tb4_title: "WhatsApp Help", tb4_sub: "24/7 dedicated support",
-        revHeading: "Customer Reviews & Feedback",
         sizeLabel: "Select Size:",
         formHeaderTitle: "Fast WhatsApp Checkout",
-        modalOrderBtnText: "Confirm WhatsApp Order"
+        modalOrderBtnText: "Confirm WhatsApp Order",
+        custNamePlaceholder: "Customer Name",
+        custPhonePlaceholder: "Phone Number",
+        custAddressPlaceholder: "Full Delivery Address",
+        categories: {
+          'All': 'All Items',
+          'Glass Bangles': 'Glass Bangles',
+          'Metal Bangles': 'Metal Bangles',
+          'Jewelry Set': 'Jewelry Set',
+          'Bracelets': 'Bracelets',
+          'Other': 'Other'
+        }
       },
       bn: {
         heroTitle: "রূপের আভিজাত্যে রূপেলিয়া",
@@ -236,11 +214,20 @@
         tb1_title: "দ্রুত ডেলিভারি", tb1_sub: "সারাদেশে হোম ডেলিভারি",
         tb2_title: "ক্যাশ অন ডেলিভারি", tb2_sub: "পণ্য দেখে মূল্য পরিশোধ",
         tb3_title: "১০০% প্রিমিয়াম", tb3_sub: "সেরা কারিগর ও কোয়ালিটি",
-        tb4_title: "হোয়াটসঅ্যাপ সাপোর্ট", tb4_sub: "সার্বক্ষণিক কাস্টমার সেবা",
-        revHeading: "সম্মানিত কাস্টমারদের মতামত",
         sizeLabel: "সাইজ বেছে নিন:",
         formHeaderTitle: "সহজে অর্ডার কনফার্ম করুন",
-        modalOrderBtnText: "হোয়াটসঅ্যাপে অর্ডার কনফার্ম করুন"
+        modalOrderBtnText: "হোয়াটসঅ্যাপে অর্ডার কনফার্ম করুন",
+        custNamePlaceholder: "আপনার নাম",
+        custPhonePlaceholder: "মোবাইল নাম্বার",
+        custAddressPlaceholder: "ডেলিভারি ঠিকানা",
+        categories: {
+          'All': 'সবগুলো',
+          'Glass Bangles': 'কাচের চুড়ি',
+          'Metal Bangles': 'মেটাল চুড়ি',
+          'Jewelry Set': 'জুয়েলারি সেট',
+          'Bracelets': 'ব্রেসলেট',
+          'Other': 'অন্যান্য'
+        }
       }
     };
 
@@ -262,12 +249,21 @@
       document.getElementById('tb2_sub').innerText = t.tb2_sub;
       document.getElementById('tb3_title').innerText = t.tb3_title;
       document.getElementById('tb3_sub').innerText = t.tb3_sub;
-      document.getElementById('tb4_title').innerText = t.tb4_title;
-      document.getElementById('tb4_sub').innerText = t.tb4_sub;
-      document.getElementById('revHeading').innerText = t.revHeading;
       document.getElementById('sizeLabel').innerText = t.sizeLabel;
       document.getElementById('formHeaderTitle').innerText = t.formHeaderTitle;
       document.getElementById('modalOrderBtnText').innerText = t.modalOrderBtnText;
+      document.getElementById('custName').placeholder = t.custNamePlaceholder;
+      document.getElementById('custPhone').placeholder = t.custPhonePlaceholder;
+      document.getElementById('custAddress').placeholder = t.custAddressPlaceholder;
+
+      // ক্যাটাগরি চিপসের নাম আপডেট
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        const catKey = btn.getAttribute('data-cat');
+        if (t.categories[catKey]) {
+          btn.innerText = t.categories[catKey];
+        }
+      });
+
       render(getFiltered());
     }
 
@@ -283,7 +279,8 @@
     function filterCategory(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
-        if (btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All'))) {
+        const catKey = btn.getAttribute('data-cat');
+        if (catKey === cat) {
           btn.className = 'cat-btn active bg-pink-600 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap shadow-sm';
         } else {
           btn.className = 'cat-btn bg-white hover:bg-gray-100 border text-gray-700 text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap';
@@ -295,7 +292,16 @@
     function getFiltered() {
       const q = document.getElementById('searchInput').value.toLowerCase().trim();
       return allProducts.filter(p => {
-        const matchesCategory = (currentCategory === 'All' || p.category === currentCategory);
+        // বাংলা ও ইংরেজি উভয় ক্যাটাগরি ভ্যালু সাপোর্ট
+        const catVal = p.category || 'Other';
+        const matchesCategory = (currentCategory === 'All' || 
+          catVal === currentCategory || 
+          (currentCategory === 'Glass Bangles' && catVal === 'কাচের চুড়ি') ||
+          (currentCategory === 'Metal Bangles' && catVal === 'মেটাল চুড়ি') ||
+          (currentCategory === 'Jewelry Set' && catVal === 'জুয়েলারি সেট') ||
+          (currentCategory === 'Bracelets' && catVal === 'ব্রেসলেট') ||
+          (currentCategory === 'Other' && catVal === 'অন্যান্য')
+        );
         const matchesSearch = (p.title || "").toLowerCase().includes(q) || (p.description || "").toLowerCase().includes(q);
         return matchesCategory && matchesSearch;
       });
@@ -310,7 +316,7 @@
       grid.innerHTML = '';
 
       if (products.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">কোনো প্রোডাক্ট পাওয়া যায়নি।</p>';
+        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">No products found.</p>';
         return;
       }
 
@@ -453,7 +459,7 @@
       const address = document.getElementById('custAddress').value.trim();
 
       if (!name || !phone || !address) {
-        alert('অনুগ্রহ করে নাম, মোবাইল নাম্বার এবং ডেলিভারি ঠিকানা পূরণ করুন!');
+        alert('Please fill out Name, Phone Number, and Delivery Address!');
         return;
       }
 
