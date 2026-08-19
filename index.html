@@ -16,6 +16,10 @@
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -25,6 +29,7 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #FAF8F5;
+      overflow-x: hidden;
     }
     .font-luxury {
       font-family: 'Cormorant Garamond', serif;
@@ -32,14 +37,8 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     
-    /* Luxury Gradients & Shimmer */
     .bg-rose-gold {
       background: linear-gradient(135deg, #c07a82 0%, #a25861 50%, #873e48 100%);
-    }
-    .text-gold-gradient {
-      background: linear-gradient(135deg, #b76e79 0%, #d4af37 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
     .glass-nav {
       background: rgba(255, 255, 255, 0.85);
@@ -47,11 +46,18 @@
       -webkit-backdrop-filter: blur(12px);
     }
     .luxury-card {
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .luxury-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px -8px rgba(183, 110, 121, 0.15);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 20px 35px -10px rgba(183, 110, 121, 0.22);
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(135, 62, 72, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(135, 62, 72, 0); }
+    }
+    .pulse-btn {
+      animation: pulseGlow 2.5s infinite;
     }
   </style>
 </head>
@@ -61,9 +67,8 @@
   <header class="glass-nav sticky top-0 z-40 border-b border-[#F0E6E2]">
     <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       
-      <!-- ব্র্যান্ড লোগো -->
       <a href="index.html" class="flex items-center gap-2 group">
-        <span class="w-8 h-8 rounded-full bg-[#FAF0EC] border border-[#E8D5CE] flex items-center justify-center text-[#B76E79] shadow-inner text-sm">
+        <span class="w-8 h-8 rounded-full bg-[#FAF0EC] border border-[#E8D5CE] flex items-center justify-center text-[#B76E79] shadow-inner text-sm transition transform group-hover:rotate-12">
           <i class="fa-solid fa-gem"></i>
         </span>
         <h1 class="text-2xl md:text-3xl font-luxury font-bold tracking-[0.2em] text-[#873E48] group-hover:opacity-90 transition">
@@ -71,7 +76,6 @@
         </h1>
       </a>
       
-      <!-- সার্চ বার -->
       <div class="order-3 md:order-2 w-full md:w-80 relative">
         <input 
           type="text" 
@@ -82,12 +86,11 @@
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 md:top-3 text-[#BFA099] text-xs md:text-sm"></i>
       </div>
 
-      <!-- অ্যাকশন বাটনসমূহ -->
       <div class="order-2 md:order-3 flex items-center gap-2">
         <button 
           id="langToggleBtn" 
           onclick="toggleLanguage()" 
-          class="text-xs font-semibold bg-[#FAF0EC] hover:bg-[#F3E3DD] text-[#873E48] px-3.5 py-2 rounded-full border border-[#E8D5CE] transition flex items-center gap-1.5 shadow-sm"
+          class="text-xs font-semibold bg-[#FAF0EC] hover:bg-[#F3E3DD] text-[#873E48] px-3.5 py-2 rounded-full border border-[#E8D5CE] transition flex items-center gap-1.5 shadow-sm active:scale-95"
         >
           <i class="fa-solid fa-globe text-[#B76E79]"></i>
           <span id="langBtnText">বাংলা</span>
@@ -96,7 +99,7 @@
         <a 
           href="https://wa.me/8801619626988" 
           target="_blank" 
-          class="hidden sm:flex bg-[#873E48] text-white px-4 py-2 rounded-full text-xs font-bold items-center gap-1.5 hover:bg-[#6e3038] transition shadow-md shadow-[#873E48]/20"
+          class="hidden sm:flex bg-[#873E48] text-white px-4 py-2 rounded-full text-xs font-bold items-center gap-1.5 hover:bg-[#6e3038] transition shadow-md shadow-[#873E48]/20 active:scale-95"
         >
           <i class="fab fa-whatsapp text-sm"></i> <span id="waBtn">Support</span>
         </a>
@@ -104,8 +107,8 @@
     </div>
   </header>
 
-  <!-- ফ্ল্যাগশিপ লাক্সারি ব্যানার -->
-  <section class="max-w-6xl mx-auto px-4 pt-4 w-full">
+  <!-- হিরো ব্যানার (Fade Down Animation) -->
+  <section class="max-w-6xl mx-auto px-4 pt-4 w-full" data-aos="fade-down" data-aos-duration="900">
     <div class="relative overflow-hidden rounded-3xl bg-rose-gold text-white p-8 md:p-14 shadow-xl border border-white/20">
       <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
       <div class="relative z-10">
@@ -121,24 +124,24 @@
     </div>
   </section>
 
-  <!-- ৩টি ট্রাস্ট ব্যাজ (মিনিমাল লাক্সারি ডিজাইন) -->
+  <!-- ট্রাস্ট ব্যাজ (Fade Up with Delay) -->
   <section class="max-w-6xl mx-auto px-4 py-6 w-full">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm">
+      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="100">
         <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-truck-fast"></i></div>
         <div>
           <h4 class="font-bold text-xs text-[#3D3535]" id="tb1_title">Fast Delivery</h4>
           <p class="text-[10px] text-gray-500" id="tb1_sub">All over Bangladesh</p>
         </div>
       </div>
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm">
+      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="200">
         <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-hand-holding-dollar"></i></div>
         <div>
           <h4 class="font-bold text-xs text-[#3D3535]" id="tb2_title">Cash On Delivery</h4>
           <p class="text-[10px] text-gray-500" id="tb2_sub">Pay after checking</p>
         </div>
       </div>
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm">
+      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="300">
         <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-gem"></i></div>
         <div>
           <h4 class="font-bold text-xs text-[#3D3535]" id="tb3_title">100% Premium</h4>
@@ -148,8 +151,8 @@
     </div>
   </section>
 
-  <!-- ক্যাটাগরি ফিল্টার চিপস -->
-  <section class="max-w-6xl mx-auto px-4 w-full">
+  <!-- ক্যাটাগরি চিপস (Fade In) -->
+  <section class="max-w-6xl mx-auto px-4 w-full" data-aos="fade-in" data-aos-delay="200">
     <div class="flex gap-2 overflow-x-auto no-scrollbar py-1" id="categoryChips">
       <button onclick="filterCategory('All')" data-cat="All" class="cat-btn active bg-[#873E48] text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">All Items</button>
       <button onclick="filterCategory('Glass Bangles')" data-cat="Glass Bangles" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Glass Bangles</button>
@@ -162,7 +165,7 @@
 
   <!-- প্রোডাক্ট গ্রিড -->
   <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full">
-    <div class="flex justify-between items-center mb-6">
+    <div class="flex justify-between items-center mb-6" data-aos="fade-in">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-[#B76E79]"></span>
         <h3 id="sectionTitle" class="text-xl md:text-2xl font-luxury font-bold text-[#3D3535]">Exclusive Collection</h3>
@@ -173,19 +176,17 @@
     <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-6"></div>
   </main>
 
-  <!-- প্রোডাক্ট ডিটেইলস ও কুইক অর্ডার মডাল -->
+  <!-- প্রোডাক্ট ডিটেইলস মডাল (Smooth Zoom) -->
   <div id="productDetailsModal" class="fixed inset-0 bg-black/70 z-50 hidden backdrop-blur-sm flex items-center justify-center p-2 md:p-4 overflow-y-auto">
-    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto relative shadow-2xl flex flex-col border border-[#F0E6E2]">
+    <div id="modalContent" class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto relative shadow-2xl flex flex-col border border-[#F0E6E2] transition-all duration-300 transform scale-95 opacity-0">
       
-      <button onclick="closeProductDetails()" class="absolute top-3.5 right-3.5 z-20 bg-white/90 hover:bg-white text-gray-700 w-8 h-8 rounded-full flex items-center justify-center shadow-md font-bold transition">✕</button>
+      <button onclick="closeProductDetails()" class="absolute top-3.5 right-3.5 z-20 bg-white/90 hover:bg-white text-gray-700 w-8 h-8 rounded-full flex items-center justify-center shadow-md font-bold transition hover:rotate-90">✕</button>
 
-      <!-- স্লাইডার -->
       <div class="relative w-full bg-[#FAF8F5] rounded-t-3xl overflow-hidden border-b border-[#F0E6E2]">
         <div id="carouselSlider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth w-full h-72 md:h-80"></div>
         <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm"></div>
       </div>
 
-      <!-- বিবরণ ও অর্ডার ফর্ম -->
       <div class="p-5 space-y-4 flex-1">
         <div>
           <div class="flex items-center gap-2 mb-1.5">
@@ -202,20 +203,18 @@
           <p id="modalDescription" class="text-xs text-gray-600 leading-relaxed"></p>
         </div>
 
-        <!-- সাইজ সিলেক্টর -->
         <div id="sizeContainer" class="hidden border-t border-[#F0E6E2] pt-3">
           <label class="block text-xs font-bold text-[#3D3535] mb-2" id="sizeLabel">Select Size:</label>
           <div id="sizeOptions" class="flex flex-wrap gap-2"></div>
         </div>
 
-        <!-- সরাসরি অর্ডার ফর্ম -->
         <div class="border-t border-[#F0E6E2] pt-3.5 space-y-2.5">
           <h4 class="text-xs font-bold text-[#873E48] uppercase tracking-wider" id="formHeaderTitle">Fast WhatsApp Checkout</h4>
           <input type="text" id="custName" placeholder="Customer Name" class="w-full p-2.5 border border-[#EBDCD6] rounded-xl text-xs outline-none focus:ring-2 focus:ring-[#B76E79]/40 focus:border-[#B76E79]">
           <input type="tel" id="custPhone" placeholder="Phone Number" class="w-full p-2.5 border border-[#EBDCD6] rounded-xl text-xs outline-none focus:ring-2 focus:ring-[#B76E79]/40 focus:border-[#B76E79]">
           <textarea id="custAddress" rows="2" placeholder="Full Delivery Address" class="w-full p-2.5 border border-[#EBDCD6] rounded-xl text-xs outline-none focus:ring-2 focus:ring-[#B76E79]/40 focus:border-[#B76E79]"></textarea>
 
-          <button onclick="submitDirectOrder()" class="w-full bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-[#873E48]/20">
+          <button onclick="submitDirectOrder()" class="pulse-btn w-full bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-[#873E48]/20 active:scale-98">
             <i class="fab fa-whatsapp text-lg"></i>
             <span id="modalOrderBtnText">Confirm WhatsApp Order</span>
           </button>
@@ -225,7 +224,7 @@
     </div>
   </div>
 
-  <!-- মোবাইল অ্যাপ-স্টাইল ফ্লোটিং বটম বার -->
+  <!-- মোবাইল অ্যাপ বটম বার -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-[#F0E6E2] px-6 py-2.5 flex justify-around items-center z-40 shadow-lg">
     <a href="index.html" class="flex flex-col items-center text-[#873E48]">
       <i class="fa-solid fa-house text-base"></i>
@@ -242,19 +241,26 @@
   </div>
 
   <!-- ফুটার -->
-  <footer class="bg-white border-t border-[#F0E6E2] mt-12 py-8 text-center text-xs text-gray-500">
+  <footer class="bg-white border-t border-[#F0E6E2] mt-12 py-8 text-center text-xs text-gray-500" data-aos="fade-up">
     <div class="max-w-6xl mx-auto px-4 space-y-3">
       <h4 class="font-luxury text-lg font-bold tracking-[0.15em] text-[#873E48]">RUPELIA</h4>
       <div class="flex justify-center gap-4 text-[#873E48] text-base">
-        <a href="https://facebook.com" target="_blank" class="hover:opacity-75"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com" target="_blank" class="hover:opacity-75"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com" target="_blank" class="hover:opacity-75"><i class="fab fa-tiktok"></i></a>
+        <a href="https://facebook.com" target="_blank" class="hover:scale-110 transition"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank" class="hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com" target="_blank" class="hover:scale-110 transition"><i class="fab fa-tiktok"></i></a>
       </div>
       <p>© 2026 RUPELIA. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
+    // AOS Animation Init
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out-cubic'
+    });
+
     const firebaseConfig = {
       apiKey: "AIzaSyCswBk5Hrkzmb4c26DiDKYWzw168bo6Ijo",
       authDomain: "if-ibrahim.firebaseapp.com",
@@ -414,22 +420,25 @@
         return;
       }
 
-      products.forEach(p => {
+      products.forEach((p, index) => {
         const disc = parseInt(p.discount || 0);
         const newPrice = disc > 0 ? Math.round(p.price - (p.price * disc / 100)) : p.price;
         const imgList = p.images || (p.image ? [p.image] : ['https://via.placeholder.com/300']);
         const coverImg = imgList[0];
         const isOut = p.stock === 'out_of_stock';
+        const delay = (index % 4) * 100;
 
         const card = document.createElement('div');
         card.className = "luxury-card bg-white rounded-2xl border border-[#F0E6E2] overflow-hidden flex flex-col justify-between cursor-pointer";
-        
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', delay.toString());
+
         card.innerHTML = `
           <div onclick="openProductDetails('${p.id}')">
             <div class="relative overflow-hidden bg-[#FAF8F5]">
-              ${disc > 0 ? `<div class="absolute top-2 left-2 bg-[#B76E79] text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">${disc}% OFF</div>` : ''}
+              ${disc > 0 ? `<div class="absolute top-2 left-2 bg-[#B76E79] text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10 shadow-sm">${disc}% OFF</div>` : ''}
               ${isOut ? `<div class="absolute top-2 right-2 bg-gray-900 text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">Stock Out</div>` : ''}
-              <img src="${coverImg}" class="w-full h-44 md:h-52 object-cover transition duration-500 hover:scale-105" onerror="this.src='https://via.placeholder.com/300'">
+              <img src="${coverImg}" class="w-full h-44 md:h-52 object-cover transition duration-700 hover:scale-110" onerror="this.src='https://via.placeholder.com/300'">
             </div>
             <div class="p-3">
               <span class="text-[9px] text-[#B76E79] font-bold uppercase tracking-wider">${p.category || 'Jewelry'}</span>
@@ -441,13 +450,16 @@
               ${disc > 0 ? `<span class="text-gray-400 line-through text-[10px] block">৳${p.price}</span>` : ''}
               <span class="text-[#873E48] font-bold text-sm md:text-base">৳${newPrice}</span>
             </div>
-            <button onclick="openProductDetails('${p.id}')" class="bg-[#873E48] hover:bg-[#6e3038] text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition shadow-sm">
+            <button onclick="openProductDetails('${p.id}')" class="bg-[#873E48] hover:bg-[#6e3038] text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition shadow-sm active:scale-95">
               ${trans[currentLang].orderBtn}
             </button>
           </div>
         `;
         grid.appendChild(card);
       });
+
+      // Refresh AOS for newly injected elements
+      AOS.refresh();
     }
 
     window.openProductDetails = function(id) {
@@ -494,7 +506,7 @@
         item.sizes.forEach((sz, idx) => {
           const btn = document.createElement('button');
           btn.textContent = sz;
-          btn.className = `px-3 py-1 border rounded-lg text-xs font-bold ${idx === 0 ? 'bg-[#873E48] text-white border-[#873E48]' : 'bg-white border-[#EBDCD6] text-gray-700'}`;
+          btn.className = `px-3 py-1 border rounded-lg text-xs font-bold ${idx === 0 ? 'bg-[#873E48] text-white border-[#873E48]' : 'bg-white border-[#EBDCD6] text-gray-700'} transition active:scale-95`;
           if (idx === 0) selectedSize = sz;
 
           btn.onclick = () => {
@@ -533,13 +545,25 @@
         });
       };
 
-      document.getElementById('productDetailsModal').classList.remove('hidden');
+      const modal = document.getElementById('productDetailsModal');
+      const modalContent = document.getElementById('modalContent');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modalContent.classList.remove('scale-95', 'opacity-0');
+        modalContent.classList.add('scale-100', 'opacity-100');
+      }, 20);
       document.body.classList.add('overflow-hidden');
     };
 
     window.closeProductDetails = function() {
-      document.getElementById('productDetailsModal').classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
+      const modal = document.getElementById('productDetailsModal');
+      const modalContent = document.getElementById('modalContent');
+      modalContent.classList.remove('scale-100', 'opacity-100');
+      modalContent.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }, 200);
     };
 
     window.submitDirectOrder = function() {
