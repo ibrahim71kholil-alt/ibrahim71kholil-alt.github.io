@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RUPELIA | Royal Jewelry & Handcrafted Bangles</title>
-  <meta name="description" content="Discover royal handcrafted glass bangles, bridal ornaments, and luxury jewelry sets exclusively at Rupelia.">
+  <title>RUPELIA | Premium Online Shopping & Lifestyle Store</title>
+  <meta name="description" content="Shop exclusive gadgets, watches, fashion, jewelry, home appliances, and lifestyle products at Rupelia with fast Cash on Delivery across Bangladesh.">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Luxury Fonts -->
+  <!-- Google Luxury & Bengali Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,12 +27,12 @@
 
   <style>
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
       background-color: #FAF8F5;
       overflow-x: hidden;
     }
     .font-luxury {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Cormorant Garamond', 'Hind Siliguri', serif;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -41,12 +41,12 @@
       background: linear-gradient(135deg, #c07a82 0%, #a25861 50%, #873e48 100%);
     }
     .glass-nav {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
     .luxury-card {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .luxury-card:hover {
       transform: translateY(-6px);
@@ -75,9 +75,9 @@
   <header class="glass-nav sticky top-0 z-40 border-b border-[#F0E6E2]">
     <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
       
-      <a href="index.html" class="flex items-center gap-2 group">
+      <a href="#" onclick="closeProductPage(event)" class="flex items-center gap-2 group">
         <span class="w-8 h-8 rounded-full bg-[#FAF0EC] border border-[#E8D5CE] flex items-center justify-center text-[#B76E79] shadow-inner text-sm transition transform group-hover:rotate-12">
-          <i class="fa-solid fa-gem"></i>
+          <i class="fa-solid fa-bag-shopping"></i>
         </span>
         <h1 class="text-2xl md:text-3xl font-luxury font-bold tracking-[0.2em] text-[#873E48] group-hover:opacity-90 transition">
           RUPELIA
@@ -88,7 +88,7 @@
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search handcrafted jewelry..." 
+          placeholder="Search products, gadgets, watches..." 
           class="w-full pl-10 pr-4 py-2 border border-[#EBDCD6] rounded-full text-xs md:text-sm bg-[#FCFAF8] focus:bg-white outline-none focus:ring-2 focus:ring-[#B76E79]/40 focus:border-[#B76E79] transition shadow-inner"
         >
         <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-2.5 md:top-3 text-[#BFA099] text-xs md:text-sm"></i>
@@ -105,6 +105,7 @@
           <span id="wishlistBadge" class="bg-red-500 text-white rounded-full px-1.5 py-0.2 text-[10px] font-bold">0</span>
         </button>
 
+        <!-- Language Button -->
         <button 
           id="langToggleBtn" 
           onclick="toggleLanguage()" 
@@ -114,8 +115,9 @@
           <span id="langBtnText">বাংলা</span>
         </button>
         
+        <!-- Updated WhatsApp Support Link -->
         <a 
-          href="https://wa.me/8801619626988" 
+          href="https://wa.me/8801632457606" 
           target="_blank" 
           class="hidden sm:flex bg-[#873E48] text-white px-4 py-2 rounded-full text-xs font-bold items-center gap-1.5 hover:bg-[#6e3038] transition shadow-md shadow-[#873E48]/20 active:scale-95"
         >
@@ -125,168 +127,284 @@
     </div>
   </header>
 
-  <!-- হিরো ব্যানার -->
-  <section class="max-w-6xl mx-auto px-4 pt-4 w-full" data-aos="fade-down" data-aos-duration="900">
-    <div class="relative overflow-hidden rounded-3xl bg-rose-gold text-white p-8 md:p-14 shadow-xl border border-white/20">
-      <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
-      <div class="relative z-10">
-        <div class="flex items-center gap-2 mb-2">
-          <span class="h-[1px] w-6 bg-rose-200"></span>
-          <span class="text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] text-rose-100">Royal Bangles Collection</span>
-        </div>
-        <h2 id="heroTitle" class="text-3xl md:text-5xl font-luxury font-bold leading-tight mb-2">Elegance Redefined</h2>
-        <p id="heroSubtitle" class="text-rose-100 max-w-xl text-xs md:text-sm font-normal leading-relaxed opacity-95">
-          Adorn yourself with our timeless collection of handcrafted bangles and exquisite jewelry.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ট্রাস্ট ব্যাজ -->
-  <section class="max-w-6xl mx-auto px-4 py-6 w-full">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-truck-fast"></i></div>
-        <div>
-          <h4 class="font-bold text-xs text-[#3D3535]" id="tb1_title">Fast Delivery</h4>
-          <p class="text-[10px] text-gray-500" id="tb1_sub">All over Bangladesh</p>
-        </div>
-      </div>
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-        <div>
-          <h4 class="font-bold text-xs text-[#3D3535]" id="tb2_title">Cash On Delivery</h4>
-          <p class="text-[10px] text-gray-500" id="tb2_sub">Pay after checking</p>
-        </div>
-      </div>
-      <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-gem"></i></div>
-        <div>
-          <h4 class="font-bold text-xs text-[#3D3535]" id="tb3_title">100% Premium</h4>
-          <p class="text-[10px] text-gray-500" id="tb3_sub">Finest craftsmanship</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ক্যাটাগরি চিপস -->
-  <section class="max-w-6xl mx-auto px-4 w-full" data-aos="fade-in" data-aos-delay="200">
-    <div class="flex gap-2 overflow-x-auto no-scrollbar py-1" id="categoryChips">
-      <button onclick="filterCategory('All')" data-cat="All" class="cat-btn active bg-[#873E48] text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm">All Items</button>
-      <button onclick="filterCategory('Glass Bangles')" data-cat="Glass Bangles" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Glass Bangles</button>
-      <button onclick="filterCategory('Metal Bangles')" data-cat="Metal Bangles" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Metal Bangles</button>
-      <button onclick="filterCategory('Jewelry Set')" data-cat="Jewelry Set" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Jewelry Set</button>
-      <button onclick="filterCategory('Bracelets')" data-cat="Bracelets" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Bracelets</button>
-      <button onclick="filterCategory('Other')" data-cat="Other" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition">Other</button>
-    </div>
-  </section>
-
-  <!-- প্রোডাক্ট গ্রিড -->
-  <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full">
-    <div class="flex justify-between items-center mb-6" data-aos="fade-in">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#B76E79]"></span>
-        <h3 id="sectionTitle" class="text-xl md:text-2xl font-luxury font-bold text-[#3D3535]">Exclusive Collection</h3>
-      </div>
-      <span id="productCount" class="text-xs text-[#873E48] bg-[#FAF0EC] border border-[#E8D5CE] px-3 py-1 rounded-full font-bold"></span>
-    </div>
+  <!-- ==================== HOME VIEW START ==================== -->
+  <div id="homePageView" class="flex-1 flex flex-col w-full">
     
-    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-6"></div>
-  </main>
+    <!-- হিরো ব্যানার -->
+    <section class="max-w-6xl mx-auto px-4 pt-4 w-full" data-aos="fade-down" data-aos-duration="900">
+      <div class="relative overflow-hidden rounded-3xl bg-rose-gold text-white p-8 md:p-14 shadow-xl border border-white/20">
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="h-[1px] w-6 bg-rose-200"></span>
+            <span id="heroBadge" class="text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] text-rose-100">Premium Lifestyle Store</span>
+          </div>
+          <h2 id="heroTitle" class="text-3xl md:text-5xl font-luxury font-bold leading-tight mb-2">Quality & Elegance Redefined</h2>
+          <p id="heroSubtitle" class="text-rose-100 max-w-xl text-xs md:text-sm font-normal leading-relaxed opacity-95">
+            Discover trending gadgets, stylish watches, fashion essentials, jewelry, and smart home products delivered right to your doorstep.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <!-- সম্পূর্ণ ফুল-স্ক্রিন প্রোডাক্ট পেজ ভিউ -->
-  <div id="productDetailsModal" class="fixed inset-0 bg-[#FAF8F5] z-50 hidden overflow-y-auto">
-    
-    <!-- প্রোডাক্ট পেজ টপ বার -->
-    <div class="sticky top-0 z-30 glass-nav border-b border-[#F0E6E2] px-4 py-3.5 flex items-center justify-between max-w-5xl mx-auto w-full">
-      <button onclick="closeProductDetails()" class="flex items-center gap-2 text-[#873E48] font-bold text-sm hover:opacity-80 transition bg-[#FAF0EC] px-3.5 py-1.5 rounded-full border border-[#E8D5CE]">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span id="backBtnText">Back to Shop</span>
-      </button>
-      <span class="font-luxury font-bold text-lg tracking-widest text-[#873E48]">RUPELIA</span>
-      
-      <!-- টপ শেয়ার বাটন -->
-      <div class="flex items-center gap-2">
-        <button onclick="shareCurrentProduct()" class="w-9 h-9 rounded-full bg-[#FAF0EC] text-[#873E48] border border-[#E8D5CE] flex items-center justify-center hover:bg-[#F3E3DD] transition active:scale-95" title="Share Product">
-          <i class="fa-solid fa-share-nodes"></i>
+    <!-- ট্রাস্ট ব্যাজ -->
+    <section class="max-w-6xl mx-auto px-4 py-6 w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-truck-fast"></i></div>
+          <div>
+            <h4 class="font-bold text-xs text-[#3D3535]" id="tb1_title">Fast Delivery</h4>
+            <p class="text-[10px] text-gray-500" id="tb1_sub">All over Bangladesh</p>
+          </div>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <div>
+            <h4 class="font-bold text-xs text-[#3D3535]" id="tb2_title">Cash On Delivery</h4>
+            <p class="text-[10px] text-gray-500" id="tb2_sub">Pay after checking product</p>
+          </div>
+        </div>
+        <div class="bg-white p-3.5 rounded-2xl border border-[#F0E6E2] flex items-center gap-3.5 shadow-sm transition hover:scale-105 duration-300" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-10 h-10 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-base"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <h4 class="font-bold text-xs text-[#3D3535]" id="tb3_title">100% Authentic</h4>
+            <p class="text-[10px] text-gray-500" id="tb3_sub">Quality checked items</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ড্রপশিপিং ক্যাটাগরি চিপস -->
+    <section class="max-w-6xl mx-auto px-4 w-full" data-aos="fade-in" data-aos-delay="200">
+      <div class="flex gap-2 overflow-x-auto no-scrollbar py-1.5" id="categoryChips">
+        <button onclick="filterCategory('All')" data-cat="All" class="cat-btn active bg-[#873E48] text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-border-all"></i> <span>All Items</span>
+        </button>
+        <button onclick="filterCategory('Watches')" data-cat="Watches" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-regular fa-clock text-[#B76E79]"></i> <span>Watches & Smartwatches</span>
+        </button>
+        <button onclick="filterCategory('Gadgets')" data-cat="Gadgets" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-headphones text-[#B76E79]"></i> <span>Gadgets & Electronics</span>
+        </button>
+        <button onclick="filterCategory('Fashion')" data-cat="Fashion" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-shirt text-[#B76E79]"></i> <span>Fashion & Apparel</span>
+        </button>
+        <button onclick="filterCategory('Jewelry')" data-cat="Jewelry" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-gem text-[#B76E79]"></i> <span>Jewelry & Ornaments</span>
+        </button>
+        <button onclick="filterCategory('Bags & Shoes')" data-cat="Bags & Shoes" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-bag-shopping text-[#B76E79]"></i> <span>Bags & Footwear</span>
+        </button>
+        <button onclick="filterCategory('Home & Kitchen')" data-cat="Home & Kitchen" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-blender text-[#B76E79]"></i> <span>Home & Kitchen</span>
+        </button>
+        <button onclick="filterCategory('Beauty')" data-cat="Beauty" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-wand-magic-sparkles text-[#B76E79]"></i> <span>Beauty & Personal Care</span>
+        </button>
+        <button onclick="filterCategory('Health & Fitness')" data-cat="Health & Fitness" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-heart-pulse text-[#B76E79]"></i> <span>Health & Fitness</span>
+        </button>
+        <button onclick="filterCategory('Kids & Toys')" data-cat="Kids & Toys" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-puzzle-piece text-[#B76E79]"></i> <span>Kids & Toys</span>
+        </button>
+        <button onclick="filterCategory('Islamic')" data-cat="Islamic" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-moon text-[#B76E79]"></i> <span>Islamic Corner</span>
+        </button>
+        <button onclick="filterCategory('Combo Offer')" data-cat="Combo Offer" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-gift text-[#B76E79]"></i> <span>Combo & Gifts</span>
+        </button>
+        <button onclick="filterCategory('Other')" data-cat="Other" class="cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5">
+          <i class="fa-solid fa-layer-group text-[#B76E79]"></i> <span>Other</span>
         </button>
       </div>
+    </section>
+
+    <!-- প্রোডাক্ট গ্রিড -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-1 w-full">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#B76E79]"></span>
+          <h3 id="sectionTitle" class="text-xl md:text-2xl font-luxury font-bold text-[#3D3535]">Exclusive Collection</h3>
+        </div>
+        <span id="productCount" class="text-xs text-[#873E48] bg-[#FAF0EC] border border-[#E8D5CE] px-3 py-1 rounded-full font-bold"></span>
+      </div>
+      
+      <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 md:gap-6"></div>
+    </main>
+  </div>
+  <!-- ==================== HOME VIEW END ==================== -->
+
+
+  <!-- ==================== DEDICATED PRODUCT PAGE VIEW START ==================== -->
+  <div id="productPageView" class="hidden flex-1 w-full bg-[#FAF8F5] pb-12">
+    
+    <!-- ব্রেডক্রাম্ব এবং ব্যাক নেভিগেশন বার -->
+    <div class="bg-white border-b border-[#F0E6E2]">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 overflow-hidden">
+          <button onclick="closeProductPage()" class="flex items-center gap-1.5 text-[#873E48] font-bold text-xs md:text-sm hover:bg-[#F3E3DD] transition bg-[#FAF0EC] px-3.5 py-1.5 rounded-full border border-[#E8D5CE] shrink-0 active:scale-95">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span id="backBtnText">Back to Shop</span>
+          </button>
+          <div class="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 truncate">
+            <span>/</span>
+            <span id="breadcrumbCat" class="text-[#B76E79] font-semibold">Category</span>
+            <span>/</span>
+            <span id="breadcrumbTitle" class="text-gray-600 truncate max-w-[240px]">Product</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="toggleCurrentProductWishlist()" id="topWishlistBtn" class="w-9 h-9 rounded-full bg-[#FAF0EC] text-gray-400 border border-[#E8D5CE] flex items-center justify-center hover:bg-[#F3E3DD] transition active:scale-95" title="Add to Wishlist">
+            <i class="fa-solid fa-heart"></i>
+          </button>
+          <button onclick="shareCurrentProduct()" class="w-9 h-9 rounded-full bg-[#FAF0EC] text-[#873E48] border border-[#E8D5CE] flex items-center justify-center hover:bg-[#F3E3DD] transition active:scale-95" title="Share Product">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <!-- মূল ফুল-স্ক্রিন প্রোডাক্ট কনটেন্ট -->
-    <div class="max-w-5xl mx-auto px-4 py-6 md:py-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-      
-      <!-- বাম পাশ: মাল্টি-ইমেজ স্লাইডার ও ইন্টারঅ্যাক্টিভ জুম -->
-      <div class="space-y-4">
-        <div class="relative w-full bg-white rounded-3xl overflow-hidden border border-[#F0E6E2] shadow-sm zoom-container" id="zoomArea">
-          <div id="carouselSlider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth w-full h-80 md:h-[430px]"></div>
-          <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm"></div>
-        </div>
-        <p class="text-[11px] text-gray-400 text-center flex items-center justify-center gap-1.5" id="swipeHint">
-          <i class="fa-solid fa-magnifying-glass-plus"></i> Move cursor or swipe to inspect details
-        </p>
-      </div>
-
-      <!-- ডান পাশ: পণ্যের বিবরণ, শেয়ার ও সরাসরি অর্ডার বাটন -->
-      <div class="bg-white p-6 md:p-8 rounded-3xl border border-[#F0E6E2] shadow-sm space-y-5">
+    <!-- মূল প্রোডাক্ট ডিটেইলস বডি -->
+    <div class="max-w-6xl mx-auto px-4 py-6 md:py-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span id="modalDiscountBadge" class="bg-[#B76E79] text-white text-xs font-bold px-2.5 py-0.5 rounded-lg hidden"></span>
-            <span id="modalStockBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-lg"></span>
-            <button id="modalWishlistBtn" onclick="toggleCurrentProductWishlist()" class="ml-auto text-gray-300 hover:text-red-500 transition text-lg">
-              <i class="fa-solid fa-heart"></i>
-            </button>
+        <!-- বাম পাশ: প্রোডাক্ট ইমেজ স্লাইডার ও থাম্বনেইল গ্যালারি (5 Cols) -->
+        <div class="lg:col-span-5 space-y-3 lg:sticky lg:top-24">
+          <div class="relative w-full bg-white rounded-3xl overflow-hidden border border-[#F0E6E2] shadow-sm zoom-container" id="zoomArea">
+            <div id="carouselSlider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth w-full h-80 sm:h-96 md:h-[420px]"></div>
+            <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm"></div>
           </div>
 
-          <h1 id="modalTitle" class="text-2xl md:text-3xl font-luxury font-bold text-[#2C2727] leading-snug"></h1>
-          
-          <div class="flex items-baseline gap-3 my-3">
-            <span id="modalCurrentPrice" class="text-3xl font-bold text-[#873E48]"></span>
-            <span id="modalOldPrice" class="text-gray-400 line-through text-lg hidden"></span>
-          </div>
-        </div>
+          <!-- থাম্বনেইল লিস্ট -->
+          <div id="thumbnailContainer" class="flex gap-2.5 overflow-x-auto no-scrollbar py-1"></div>
 
-        <!-- সাইজ সিলেক্টর -->
-        <div id="sizeContainer" class="hidden border-t border-[#F0E6E2] pt-4">
-          <label class="block text-xs font-bold text-[#3D3535] mb-2.5 uppercase tracking-wider" id="sizeLabel">Select Size:</label>
-          <div id="sizeOptions" class="flex flex-wrap gap-2.5"></div>
-        </div>
-
-        <!-- বিবরণ -->
-        <div class="border-t border-[#F0E6E2] pt-4">
-          <h4 class="text-xs font-bold text-[#3D3535] uppercase tracking-wider mb-2" id="descLabel">Product Description</h4>
-          <p id="modalDescription" class="text-sm text-gray-600 leading-relaxed whitespace-pre-line"></p>
-        </div>
-
-        <!-- শেয়ার অপশন বাটন স্ট্রিপ -->
-        <div class="border-t border-[#F0E6E2] pt-4 flex items-center justify-between">
-          <span class="text-xs font-bold text-gray-600" id="shareText">Share this with friends:</span>
-          <div class="flex gap-2">
-            <button onclick="shareToWhatsApp()" class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-100 transition shadow-sm" title="Share via WhatsApp">
-              <i class="fab fa-whatsapp"></i>
-            </button>
-            <button onclick="copyProductLink()" class="w-8 h-8 rounded-full bg-gray-100 text-gray-700 flex items-center justify-center hover:bg-gray-200 transition shadow-sm" title="Copy Link">
-              <i class="fa-solid fa-link"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- সরাসরি হোয়াটসঅ্যাপ অর্ডার বাটন -->
-        <div class="border-t border-[#F0E6E2] pt-5">
-          <button onclick="submitDirectWhatsAppOrder()" class="pulse-btn w-full bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2.5 text-base transition shadow-xl shadow-[#873E48]/25 active:scale-98">
-            <i class="fab fa-whatsapp text-2xl text-green-300"></i>
-            <span id="modalOrderBtnText">Order via WhatsApp</span>
-          </button>
-          <p class="text-[11px] text-gray-400 text-center mt-2.5" id="orderSubText">
-            Instant order on WhatsApp without filling forms
+          <p class="text-[11px] text-gray-400 text-center flex items-center justify-center gap-1.5" id="swipeHint">
+            <i class="fa-solid fa-magnifying-glass-plus"></i> Hover to zoom or click thumbnails to view all photos
           </p>
         </div>
 
+        <!-- ডান পাশ: প্রোডাক্টের সম্পূর্ণ বিবরণ ও অর্ডার সেকশন (7 Cols) -->
+        <div class="lg:col-span-7 bg-white p-5 sm:p-8 rounded-3xl border border-[#F0E6E2] shadow-sm space-y-6">
+          
+          <!-- ব্যাজ ও স্টক স্ট্যাটাস -->
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#F7EFEB] pb-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="pageCategoryBadge" class="bg-[#FAF0EC] text-[#873E48] border border-[#E8D5CE] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider"></span>
+              <span id="pageDiscountBadge" class="bg-[#B76E79] text-white text-xs font-bold px-2.5 py-1 rounded-full hidden"></span>
+              <span id="pageStockBadge" class="text-xs font-bold px-3 py-1 rounded-full"></span>
+            </div>
+            <span id="pageProductCode" class="text-xs text-gray-400 font-mono bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100"></span>
+          </div>
+
+          <!-- টাইটেল ও প্রাইস বক্স -->
+          <div>
+            <h1 id="pageTitle" class="text-2xl sm:text-3xl font-luxury font-bold text-[#2C2727] leading-snug mb-4"></h1>
+            
+            <div class="bg-[#FCFAF8] border border-[#F0E6E2] p-4 rounded-2xl flex flex-wrap items-baseline gap-3">
+              <span id="pageCurrentPrice" class="text-3xl sm:text-4xl font-bold text-[#873E48]"></span>
+              <span id="pageOldPrice" class="text-gray-400 line-through text-lg hidden"></span>
+              <span id="pageSaveBadge" class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded-lg hidden ml-auto"></span>
+            </div>
+          </div>
+
+          <!-- সাইজ / ভ্যারিয়েন্ট সিলেক্টর -->
+          <div id="sizeContainer" class="hidden space-y-2.5">
+            <label class="block text-xs font-bold text-[#3D3535] uppercase tracking-wider" id="sizeLabel">Select Option / Size:</label>
+            <div id="sizeOptions" class="flex flex-wrap gap-2.5"></div>
+          </div>
+
+          <!-- কালার সিলেক্টর (যদি প্রোডাক্টে কালার থাকে) -->
+          <div id="colorContainer" class="hidden space-y-2.5">
+            <label class="block text-xs font-bold text-[#3D3535] uppercase tracking-wider" id="colorLabel">Select Color:</label>
+            <div id="colorOptions" class="flex flex-wrap gap-2.5"></div>
+          </div>
+
+          <!-- কোয়ান্টিটি (পরিমাণ) এবং মোট দাম -->
+          <div class="flex flex-wrap items-center justify-between gap-4 bg-[#FAF8F5] p-4 rounded-2xl border border-[#F0E6E2]">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-[#3D3535] uppercase tracking-wider" id="qtyLabel">Quantity:</span>
+              <div class="flex items-center border border-[#EBDCD6] bg-white rounded-xl overflow-hidden shadow-sm">
+                <button onclick="changeQuantity(-1)" class="w-9 h-9 flex items-center justify-center text-[#873E48] hover:bg-[#FAF0EC] font-bold transition">-</button>
+                <span id="qtyValue" class="w-10 text-center font-bold text-sm">1</span>
+                <button onclick="changeQuantity(1)" class="w-9 h-9 flex items-center justify-center text-[#873E48] hover:bg-[#FAF0EC] font-bold transition">+</button>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[11px] text-gray-500 block" id="totalPriceLabel">Total Payable:</span>
+              <span id="totalCalculatedPrice" class="text-lg font-bold text-[#873E48]">৳0</span>
+            </div>
+          </div>
+
+          <!-- সরাসরি হোয়াটসঅ্যাপ অর্ডার বাটন -->
+          <div class="space-y-2.5">
+            <button id="orderActionBtn" onclick="submitDirectWhatsAppOrder()" class="pulse-btn w-full bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 text-base transition shadow-xl shadow-[#873E48]/25 active:scale-98">
+              <i class="fab fa-whatsapp text-2xl text-green-300"></i>
+              <span id="modalOrderBtnText">Order Now via WhatsApp</span>
+            </button>
+            <p class="text-[11px] text-gray-500 text-center flex items-center justify-center gap-1.5" id="orderSubText">
+              <i class="fa-solid fa-bolt text-amber-500"></i> Click to send complete product details directly on WhatsApp (01632457606)
+            </p>
+          </div>
+
+          <!-- প্রোডাক্টের বিস্তারিত বিবরণ (Full Details) -->
+          <div class="border-t border-[#F0E6E2] pt-5 space-y-3">
+            <h4 class="text-sm font-bold text-[#3D3535] uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-[#B76E79]"></i>
+              <span id="descLabel">Full Product Details & Specifications</span>
+            </h4>
+            <div id="pageDescription" class="text-sm text-gray-600 leading-relaxed whitespace-pre-line bg-[#FCFAF8] p-4 rounded-2xl border border-[#F7EFEB]"></div>
+          </div>
+
+          <!-- ডেলিভারি এবং ক্যাশ অন ডেলিভারি গাইডলাইন -->
+          <div class="border-t border-[#F0E6E2] pt-5">
+            <h4 class="text-xs font-bold text-[#3D3535] uppercase tracking-wider mb-3" id="deliveryInfoTitle">Delivery & Order Information</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-xl bg-[#FAF0EC]/60 border border-[#E8D5CE] flex items-start gap-2.5">
+                <i class="fa-solid fa-truck text-[#873E48] mt-0.5"></i>
+                <div>
+                  <span class="font-bold text-[#2C2727] block" id="delInsideTitle">Home Delivery</span>
+                  <span class="text-gray-600" id="delInsideSub">Inside Dhaka: 1-2 Days | Outside Dhaka: 2-4 Days</span>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-[#FAF0EC]/60 border border-[#E8D5CE] flex items-start gap-2.5">
+                <i class="fa-solid fa-box-open text-[#873E48] mt-0.5"></i>
+                <div>
+                  <span class="font-bold text-[#2C2727] block" id="delCheckTitle">Easy Return & Check</span>
+                  <span class="text-gray-600" id="delCheckSub">Check your product in front of the delivery man</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- শেয়ার অপশন -->
+          <div class="border-t border-[#F0E6E2] pt-4 flex items-center justify-between">
+            <span class="text-xs font-bold text-gray-600" id="shareText">Share this product:</span>
+            <div class="flex gap-2">
+              <button onclick="shareToWhatsApp()" class="px-3 py-1.5 rounded-full bg-green-50 text-green-600 text-xs font-semibold flex items-center gap-1.5 hover:bg-green-100 transition shadow-sm">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+              </button>
+              <button onclick="copyProductLink()" class="px-3 py-1.5 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold flex items-center gap-1.5 hover:bg-gray-200 transition shadow-sm">
+                <i class="fa-solid fa-link"></i> Copy Link
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- রিলেটেড প্রোডাক্ট সেকশন (Related Products) -->
+      <div id="relatedProductsSection" class="mt-12 pt-8 border-t border-[#EBDCD6] hidden">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="w-2 h-2 rounded-full bg-[#B76E79]"></span>
+          <h3 id="relatedTitle" class="text-xl md:text-2xl font-luxury font-bold text-[#3D3535]">Related Products</h3>
+        </div>
+        <div id="relatedGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3.5 md:gap-6"></div>
       </div>
 
     </div>
   </div>
+  <!-- ==================== DEDICATED PRODUCT PAGE VIEW END ==================== -->
 
   <!-- কপি টু ক্লিপবোর্ড টোস্ট অ্যালার্ট -->
   <div id="copyToast" class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-4 py-2.5 rounded-full shadow-2xl z-50 hidden transition opacity-0">
@@ -295,7 +413,7 @@
 
   <!-- মোবাইল অ্যাপ বটম বার -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 glass-nav border-t border-[#F0E6E2] px-6 py-2.5 flex justify-around items-center z-30 shadow-lg">
-    <a href="index.html" class="flex flex-col items-center text-[#873E48]">
+    <a href="#" onclick="closeProductPage(event)" class="flex flex-col items-center text-[#873E48]">
       <i class="fa-solid fa-house text-base"></i>
       <span class="text-[10px] font-semibold mt-0.5">Home</span>
     </a>
@@ -303,20 +421,21 @@
       <i class="fa-solid fa-heart text-base text-red-500"></i>
       <span class="text-[10px] font-semibold mt-0.5">Wishlist</span>
     </button>
-    <button onclick="document.getElementById('searchInput').focus(); window.scrollTo({top:0, behavior:'smooth'});" class="flex flex-col items-center text-gray-500 hover:text-[#873E48]">
+    <button onclick="closeProductPage(); document.getElementById('searchInput').focus(); window.scrollTo({top:0, behavior:'smooth'});" class="flex flex-col items-center text-gray-500 hover:text-[#873E48]">
       <i class="fa-solid fa-magnifying-glass text-base"></i>
       <span class="text-[10px] font-semibold mt-0.5">Search</span>
     </button>
-    <a href="https://wa.me/8801619626988" target="_blank" class="flex flex-col items-center text-green-600">
+    <a href="https://wa.me/8801632457606" target="_blank" class="flex flex-col items-center text-green-600">
       <i class="fab fa-whatsapp text-lg"></i>
       <span class="text-[10px] font-semibold mt-0.5">WhatsApp</span>
     </a>
   </div>
 
   <!-- ফুটার -->
-  <footer class="bg-white border-t border-[#F0E6E2] mt-12 py-8 text-center text-xs text-gray-500" data-aos="fade-up">
+  <footer class="bg-white border-t border-[#F0E6E2] mt-auto py-8 text-center text-xs text-gray-500">
     <div class="max-w-6xl mx-auto px-4 space-y-3">
       <h4 class="font-luxury text-lg font-bold tracking-[0.15em] text-[#873E48]">RUPELIA</h4>
+      <p class="text-xs text-gray-500">Helpline / WhatsApp: <a href="https://wa.me/8801632457606" class="text-[#873E48] font-bold hover:underline">01632457606</a></p>
       <div class="flex justify-center gap-4 text-[#873E48] text-base">
         <a href="https://facebook.com" target="_blank" class="hover:scale-110 transition"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com" target="_blank" class="hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
@@ -327,6 +446,8 @@
   </footer>
 
   <script>
+    const WHATSAPP_NUMBER = "8801632457606";
+
     AOS.init({
       duration: 800,
       once: true,
@@ -351,63 +472,133 @@
     let currentLang = 'en';
     let activeProduct = null;
     let selectedSize = '';
+    let selectedColor = '';
+    let selectedQty = 1;
     let wishlist = JSON.parse(localStorage.getItem('rupelia_wishlist') || '[]');
     let showingWishlistOnly = false;
 
+    const categoryIcons = {
+      'All': 'fa-solid fa-border-all',
+      'Watches': 'fa-regular fa-clock',
+      'Gadgets': 'fa-solid fa-headphones',
+      'Fashion': 'fa-solid fa-shirt',
+      'Jewelry': 'fa-solid fa-gem',
+      'Bags & Shoes': 'fa-solid fa-bag-shopping',
+      'Home & Kitchen': 'fa-solid fa-blender',
+      'Beauty': 'fa-solid fa-wand-magic-sparkles',
+      'Health & Fitness': 'fa-solid fa-heart-pulse',
+      'Kids & Toys': 'fa-solid fa-puzzle-piece',
+      'Islamic': 'fa-solid fa-moon',
+      'Combo Offer': 'fa-solid fa-gift',
+      'Other': 'fa-solid fa-layer-group'
+    };
+
+    // ক্যাটাগরি ম্যাচিং ম্যাপ (পুরানো ও নতুন সব ক্যাটাগরি সাপোর্ট করার জন্য)
+    const categoryAliases = {
+      'Watches': ['Watches', 'Watches & Smartwatches', 'ঘড়ি ও স্মার্টওয়াচ', 'ঘড়ি', 'Smartwatch'],
+      'Gadgets': ['Gadgets', 'Gadgets & Electronics', 'গ্যাজেট ও ইলেকট্রনিক্স', 'Electronics', 'গ্যাজেট'],
+      'Fashion': ['Fashion', 'Fashion & Apparel', 'ফ্যাশন ও পোশাক', 'Clothing', 'পোশাক'],
+      'Jewelry': ['Jewelry', 'Jewelry & Ornaments', 'জুয়েলারি ও অর্নামেন্টস', 'Glass Bangles', 'Metal Bangles', 'Jewelry Set', 'Bracelets', 'কাচের চুড়ি', 'মেটাল চুড়ি', 'জুয়েলারি সেট', 'ব্রেসলেট'],
+      'Bags & Shoes': ['Bags & Shoes', 'Bags & Footwear', 'ব্যাগ ও জুতা', 'Bags', 'Shoes'],
+      'Home & Kitchen': ['Home & Kitchen', 'হোম ও কিচেন', 'Home Appliances'],
+      'Beauty': ['Beauty', 'Beauty & Personal Care', 'বিউটি ও স্কিনকেয়ার', 'Cosmetics'],
+      'Health & Fitness': ['Health & Fitness', 'হেলথ ও ফিটনেস'],
+      'Kids & Toys': ['Kids & Toys', 'শিশু ও খেলনা', 'Toys'],
+      'Islamic': ['Islamic', 'Islamic Corner', 'ইসলামিক কর্নার'],
+      'Combo Offer': ['Combo Offer', 'Combo & Gifts', 'কম্বো ও গিফট'],
+      'Other': ['Other', 'অন্যান্য']
+    };
+
     const trans = {
       en: {
-        heroTitle: "Elegance Redefined",
-        heroSubtitle: "Adorn yourself with our timeless collection of handcrafted bangles and exquisite jewelry.",
+        heroBadge: "Premium Lifestyle Store",
+        heroTitle: "Quality & Elegance Redefined",
+        heroSubtitle: "Discover trending gadgets, stylish watches, fashion essentials, jewelry, and smart home products delivered right to your doorstep.",
+        searchPlaceholder: "Search products, gadgets, watches...",
         sectionTitle: "Exclusive Collection",
         wishlistSectionTitle: "My Wishlist Items",
-        orderBtn: "Order",
+        orderBtn: "View Details",
         waBtn: "Support",
         langBtn: "বাংলা",
         tb1_title: "Fast Delivery", tb1_sub: "All over Bangladesh",
-        tb2_title: "Cash On Delivery", tb2_sub: "Pay after checking",
-        tb3_title: "100% Premium", tb3_sub: "Finest craftsmanship",
+        tb2_title: "Cash On Delivery", tb2_sub: "Pay after checking product",
+        tb3_title: "100% Authentic", tb3_sub: "Quality checked items",
         backBtnText: "Back to Shop",
-        swipeHint: "Move cursor or swipe to inspect details",
-        sizeLabel: "Select Size:",
-        descLabel: "Product Description",
-        modalOrderBtnText: "Order via WhatsApp",
-        orderSubText: "Instant order on WhatsApp without filling forms",
-        shareText: "Share this with friends:",
-        copiedMsg: "Link copied to clipboard!",
+        swipeHint: "Hover to zoom or click thumbnails to view all photos",
+        sizeLabel: "Select Option / Size:",
+        colorLabel: "Select Color:",
+        qtyLabel: "Quantity:",
+        totalPriceLabel: "Total Payable:",
+        descLabel: "Full Product Details & Specifications",
+        modalOrderBtnText: "Order Now via WhatsApp",
+        orderSubText: "Click to send complete product details directly on WhatsApp (01632457606)",
+        deliveryInfoTitle: "Delivery & Order Information",
+        delInsideTitle: "Fast Home Delivery",
+        delInsideSub: "Inside Dhaka: 1-2 Days | Outside Dhaka: 2-4 Days",
+        delCheckTitle: "Cash On Delivery",
+        delCheckSub: "Check your product in front of the delivery man",
+        shareText: "Share this product:",
+        relatedTitle: "Related Products You May Like",
+        copiedMsg: "Product link copied to clipboard!",
         categories: {
           'All': 'All Items',
-          'Glass Bangles': 'Glass Bangles',
-          'Metal Bangles': 'Metal Bangles',
-          'Jewelry Set': 'Jewelry Set',
-          'Bracelets': 'Bracelets',
+          'Watches': 'Watches & Smartwatches',
+          'Gadgets': 'Gadgets & Electronics',
+          'Fashion': 'Fashion & Apparel',
+          'Jewelry': 'Jewelry & Ornaments',
+          'Bags & Shoes': 'Bags & Footwear',
+          'Home & Kitchen': 'Home & Kitchen',
+          'Beauty': 'Beauty & Personal Care',
+          'Health & Fitness': 'Health & Fitness',
+          'Kids & Toys': 'Kids & Toys',
+          'Islamic': 'Islamic Corner',
+          'Combo Offer': 'Combo & Gifts',
           'Other': 'Other'
         }
       },
       bn: {
-        heroTitle: "রূপের আভিজাত্যে রূপেলিয়া",
-        heroSubtitle: "ঐতিহ্য আর আধুনিকতার মেলবন্ধনে সাজিয়ে তুলুন নিজেকে, আমাদের এক্সক্লুসিভ কালেকশনে।",
+        heroBadge: "প্রিমিয়াম অনলাইন শপ",
+        heroTitle: "আভিজাত্য ও সেরা মানের নিশ্চয়তা",
+        heroSubtitle: "ট্রেন্ডিং গ্যাজেট, স্টাইলিশ ঘড়ি, ফ্যাশন, জুয়েলারি এবং হোম অ্যাপ্লায়েন্সসহ সব প্রিমিয়াম প্রোডাক্ট এখন আপনার হাতের মুঠোয়।",
+        searchPlaceholder: "প্রোডাক্ট, ঘড়ি বা গ্যাজেট খুঁজুন...",
         sectionTitle: "এক্সক্লুসিভ কালেকশন",
         wishlistSectionTitle: "আমার পছন্দের তালিকা",
-        orderBtn: "অর্ডার",
+        orderBtn: "বিস্তারিত দেখুন",
         waBtn: "সাহায্য",
         langBtn: "English",
         tb1_title: "দ্রুত ডেলিভারি", tb1_sub: "সারাদেশে হোম ডেলিভারি",
         tb2_title: "ক্যাশ অন ডেলিভারি", tb2_sub: "পণ্য দেখে মূল্য পরিশোধ",
-        tb3_title: "১০০% প্রিমিয়াম", tb3_sub: "সেরা কারিগর ও কোয়ালিটি",
+        tb3_title: "১০০% অরিজিনাল", tb3_sub: "সেরা মানের নিশ্চয়তা",
         backBtnText: "শপে ফিরে যান",
-        swipeHint: "ডিটেইল দেখতে ছবি স্ক্রোল বা জুম করুন",
-        sizeLabel: "সাইজ বেছে নিন:",
-        descLabel: "প্রোডাক্টের বিবরণ",
+        swipeHint: "সবগুলো ছবি দেখতে নিচের থাম্বনেইলে ক্লিক করুন",
+        sizeLabel: "সাইজ / ভ্যারিয়েন্ট বেছে নিন:",
+        colorLabel: "কালার বেছে নিন:",
+        qtyLabel: "পরিমাণ:",
+        totalPriceLabel: "মোট মূল্য:",
+        descLabel: "প্রোডাক্টের সম্পূর্ণ বিবরণ ও বৈশিষ্ট্য",
         modalOrderBtnText: "হোয়াটসঅ্যাপে অর্ডার করুন",
-        orderSubText: "কোনো ফরম পূরণ ছাড়া সরাসরি দ্রুত অর্ডার",
+        orderSubText: "ক্লিক করলে প্রোডাক্টের সব তথ্যসহ সরাসরি হোয়াটসঅ্যাপে (01632457606) চলে যাবে",
+        deliveryInfoTitle: "ডেলিভারি ও অর্ডার সংক্রান্ত তথ্য",
+        delInsideTitle: "দ্রুত হোম ডেলিভারি",
+        delInsideSub: "ঢাকার ভেতরে: ১-২ দিন | ঢাকার বাইরে: ২-৪ দিন",
+        delCheckTitle: "ক্যাশ অন ডেলিভারি সুবিধা",
+        delCheckSub: "ডেলিভারি ম্যানের সামনে পণ্য চেক করে পেমেন্ট করুন",
         shareText: "বন্ধুদের সাথে শেয়ার করুন:",
+        relatedTitle: "একই ক্যাটাগরির আরও প্রোডাক্ট",
         copiedMsg: "প্রোডাক্টের লিংক কপি করা হয়েছে!",
         categories: {
           'All': 'সবগুলো',
-          'Glass Bangles': 'কাচের চুড়ি',
-          'Metal Bangles': 'মেটাল চুড়ি',
-          'Jewelry Set': 'জুয়েলারি সেট',
-          'Bracelets': 'ব্রেসলেট',
+          'Watches': 'ঘড়ি ও স্মার্টওয়াচ',
+          'Gadgets': 'গ্যাজেট ও ইলেকট্রনিক্স',
+          'Fashion': 'ফ্যাশন ও পোশাক',
+          'Jewelry': 'জুয়েলারি ও অর্নামেন্টস',
+          'Bags & Shoes': 'ব্যাগ ও জুতা',
+          'Home & Kitchen': 'হোম ও কিচেন',
+          'Beauty': 'বিউটি ও স্কিনকেয়ার',
+          'Health & Fitness': 'হেলথ ও ফিটনেস',
+          'Kids & Toys': 'শিশু ও খেলনা',
+          'Islamic': 'ইসলামিক কর্নার',
+          'Combo Offer': 'কম্বো ও গিফট',
           'Other': 'অন্যান্য'
         }
       }
@@ -428,10 +619,11 @@
       localStorage.setItem('rupelia_wishlist', JSON.stringify(wishlist));
       updateWishlistBadge();
       render(getFiltered());
-      updateModalWishlistBtn();
+      updatePageWishlistBtn();
     }
 
     function toggleWishlistView() {
+      closeProductPage();
       showingWishlistOnly = !showingWishlistOnly;
       const secTitle = document.getElementById('sectionTitle');
       if (showingWishlistOnly) {
@@ -449,13 +641,13 @@
       toggleWishlist(activeProduct.id);
     }
 
-    function updateModalWishlistBtn() {
-      const btn = document.getElementById('modalWishlistBtn');
+    function updatePageWishlistBtn() {
+      const btn = document.getElementById('topWishlistBtn');
       if (!activeProduct || !btn) return;
       if (wishlist.includes(activeProduct.id)) {
-        btn.className = "ml-auto text-red-500 transition text-lg scale-110";
+        btn.className = "w-9 h-9 rounded-full bg-red-50 text-red-500 border border-red-200 flex items-center justify-center transition scale-105";
       } else {
-        btn.className = "ml-auto text-gray-300 hover:text-red-500 transition text-lg";
+        btn.className = "w-9 h-9 rounded-full bg-[#FAF0EC] text-gray-400 border border-[#E8D5CE] flex items-center justify-center hover:text-red-500 transition";
       }
     }
 
@@ -466,10 +658,12 @@
 
     function updateUI() {
       const t = trans[currentLang];
+      document.getElementById('heroBadge').innerText = t.heroBadge;
       document.getElementById('heroTitle').innerText = t.heroTitle;
       document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
+      document.getElementById('searchInput').placeholder = t.searchPlaceholder;
       document.getElementById('sectionTitle').innerText = showingWishlistOnly ? t.wishlistSectionTitle : t.sectionTitle;
-      if(document.getElementById('waBtn')) document.getElementById('waBtn').innerText = t.waBtn;
+      if (document.getElementById('waBtn')) document.getElementById('waBtn').innerText = t.waBtn;
       document.getElementById('langBtnText').innerText = t.langBtn;
       document.getElementById('tb1_title').innerText = t.tb1_title;
       document.getElementById('tb1_sub').innerText = t.tb1_sub;
@@ -481,19 +675,33 @@
       document.getElementById('backBtnText').innerText = t.backBtnText;
       document.getElementById('swipeHint').innerHTML = `<i class="fa-solid fa-magnifying-glass-plus"></i> ${t.swipeHint}`;
       document.getElementById('sizeLabel').innerText = t.sizeLabel;
+      document.getElementById('colorLabel').innerText = t.colorLabel;
+      document.getElementById('qtyLabel').innerText = t.qtyLabel;
+      document.getElementById('totalPriceLabel').innerText = t.totalPriceLabel;
       document.getElementById('descLabel').innerText = t.descLabel;
       document.getElementById('modalOrderBtnText').innerText = t.modalOrderBtnText;
-      document.getElementById('orderSubText').innerText = t.orderSubText;
+      document.getElementById('orderSubText').innerHTML = `<i class="fa-solid fa-bolt text-amber-500"></i> ${t.orderSubText}`;
+      document.getElementById('deliveryInfoTitle').innerText = t.deliveryInfoTitle;
+      document.getElementById('delInsideTitle').innerText = t.delInsideTitle;
+      document.getElementById('delInsideSub').innerText = t.delInsideSub;
+      document.getElementById('delCheckTitle').innerText = t.delCheckTitle;
+      document.getElementById('delCheckSub').innerText = t.delCheckSub;
       document.getElementById('shareText').innerText = t.shareText;
+      document.getElementById('relatedTitle').innerText = t.relatedTitle;
 
       document.querySelectorAll('.cat-btn').forEach(btn => {
         const catKey = btn.getAttribute('data-cat');
+        const iconClass = categoryIcons[catKey] || 'fa-solid fa-tag';
+        const isActive = catKey === currentCategory;
         if (t.categories[catKey]) {
-          btn.innerText = t.categories[catKey];
+          btn.innerHTML = `<i class="${iconClass} ${isActive ? 'text-white' : 'text-[#B76E79]'}"></i> <span>${t.categories[catKey]}</span>`;
         }
       });
 
       render(getFiltered());
+      if (activeProduct) {
+        renderRelatedProducts(activeProduct);
+      }
     }
 
     productsRef.on('value', (snap) => {
@@ -501,24 +709,29 @@
       const data = snap.val();
       if (data) {
         Object.keys(data).forEach(id => allProducts.push({ id, ...data[id] }));
+        allProducts.reverse(); // নতুন প্রোডাক্ট আগে দেখাবে
       }
       updateWishlistBadge();
       render(getFiltered());
-      
-      // Auto open if url has product hash
-      checkUrlHashForProduct();
+      checkUrlForProduct();
     });
 
     function filterCategory(cat) {
       currentCategory = cat;
       showingWishlistOnly = false;
-      document.getElementById('sectionTitle').textContent = trans[currentLang].sectionTitle;
+      const t = trans[currentLang];
+      document.getElementById('sectionTitle').textContent = t.sectionTitle;
+      document.getElementById('wishlistToggleBtn').classList.remove('bg-rose-100', 'border-rose-400');
+
       document.querySelectorAll('.cat-btn').forEach(btn => {
         const catKey = btn.getAttribute('data-cat');
+        const iconClass = categoryIcons[catKey] || 'fa-solid fa-tag';
         if (catKey === cat) {
-          btn.className = 'cat-btn active bg-[#873E48] text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm';
+          btn.className = 'cat-btn active bg-[#873E48] text-white text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap shadow-sm flex items-center gap-1.5';
+          btn.innerHTML = `<i class="${iconClass} text-white"></i> <span>${t.categories[catKey]}</span>`;
         } else {
-          btn.className = 'cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition';
+          btn.className = 'cat-btn bg-white hover:bg-[#FAF0EC] border border-[#EBDCD6] text-gray-700 text-xs font-semibold px-4 py-2 rounded-full whitespace-nowrap transition flex items-center gap-1.5';
+          btn.innerHTML = `<i class="${iconClass} text-[#B76E79]"></i> <span>${t.categories[catKey]}</span>`;
         }
       });
       render(getFiltered());
@@ -529,21 +742,69 @@
       return allProducts.filter(p => {
         if (showingWishlistOnly && !wishlist.includes(p.id)) return false;
 
-        const catVal = p.category || 'Other';
-        const matchesCategory = (currentCategory === 'All' || 
-          catVal === currentCategory || 
-          (currentCategory === 'Glass Bangles' && catVal === 'কাচের চুড়ি') ||
-          (currentCategory === 'Metal Bangles' && catVal === 'মেটাল চুড়ি') ||
-          (currentCategory === 'Jewelry Set' && catVal === 'জুয়েলারি সেট') ||
-          (currentCategory === 'Bracelets' && catVal === 'ব্রেসলেট') ||
-          (currentCategory === 'Other' && catVal === 'অন্যান্য')
-        );
-        const matchesSearch = (p.title || "").toLowerCase().includes(q) || (p.description || "").toLowerCase().includes(q);
+        const catVal = (p.category || 'Other').trim();
+        let matchesCategory = false;
+
+        if (currentCategory === 'All') {
+          matchesCategory = true;
+        } else {
+          const validNames = categoryAliases[currentCategory] || [currentCategory];
+          matchesCategory = validNames.some(alias => alias.toLowerCase() === catVal.toLowerCase());
+        }
+
+        const matchesSearch = (p.title || "").toLowerCase().includes(q) || 
+                              (p.description || "").toLowerCase().includes(q) ||
+                              (p.category || "").toLowerCase().includes(q);
         return matchesCategory && matchesSearch;
       });
     }
 
-    document.getElementById('searchInput').addEventListener('input', () => render(getFiltered()));
+    document.getElementById('searchInput').addEventListener('input', () => {
+      if (!document.getElementById('productPageView').classList.contains('hidden')) {
+        closeProductPage();
+      }
+      render(getFiltered());
+    });
+
+    function createProductCardHTML(p) {
+      const disc = parseInt(p.discount || 0);
+      const newPrice = disc > 0 ? Math.round(p.price - (p.price * disc / 100)) : p.price;
+      const imgList = p.images || (p.image ? [p.image] : ['https://via.placeholder.com/300']);
+      const coverImg = imgList[0];
+      const isOut = p.stock === 'out_of_stock';
+      const isFav = wishlist.includes(p.id);
+
+      const card = document.createElement('div');
+      card.className = "luxury-card bg-white rounded-2xl border border-[#F0E6E2] overflow-hidden flex flex-col justify-between cursor-pointer relative";
+
+      card.innerHTML = `
+        <button onclick="toggleWishlist('${p.id}', event)" class="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-white/85 hover:bg-white flex items-center justify-center shadow-md transition active:scale-90">
+          <i class="fa-solid fa-heart ${isFav ? 'text-red-500' : 'text-gray-300'}"></i>
+        </button>
+
+        <div onclick="openProductDetails('${p.id}')">
+          <div class="relative overflow-hidden bg-[#FAF8F5]">
+            ${disc > 0 ? `<div class="absolute top-2 left-2 bg-[#B76E79] text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10 shadow-sm">${disc}% OFF</div>` : ''}
+            ${isOut ? `<div class="absolute bottom-2 left-2 bg-gray-900/85 text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">Stock Out</div>` : ''}
+            <img src="${coverImg}" class="w-full h-44 md:h-52 object-cover transition duration-700 hover:scale-110" onerror="this.src='https://via.placeholder.com/300'">
+          </div>
+          <div class="p-3">
+            <span class="text-[9px] text-[#B76E79] font-bold uppercase tracking-wider block truncate">${p.category || 'Collection'}</span>
+            <h3 class="font-bold text-[#2C2727] text-xs md:text-sm line-clamp-2 mt-0.5 hover:text-[#873E48] transition min-h-[34px]">${p.title}</h3>
+          </div>
+        </div>
+        <div class="p-3 border-t border-[#F7EFEB] bg-[#FCFAF8] flex items-center justify-between gap-1">
+          <div>
+            ${disc > 0 ? `<span class="text-gray-400 line-through text-[10px] block">৳${p.price}</span>` : ''}
+            <span class="text-[#873E48] font-bold text-sm md:text-base">৳${newPrice}</span>
+          </div>
+          <button onclick="openProductDetails('${p.id}')" class="bg-[#873E48] hover:bg-[#6e3038] text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg transition shadow-sm active:scale-95">
+            ${trans[currentLang].orderBtn}
+          </button>
+        </div>
+      `;
+      return card;
+    }
 
     function render(products) {
       const grid = document.getElementById('productGrid');
@@ -552,96 +813,93 @@
       grid.innerHTML = '';
 
       if (products.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10 text-sm">No products found.</p>';
+        grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-12 text-sm">No products found in this category.</p>';
         return;
       }
 
-      products.forEach((p, index) => {
-        const disc = parseInt(p.discount || 0);
-        const newPrice = disc > 0 ? Math.round(p.price - (p.price * disc / 100)) : p.price;
-        const imgList = p.images || (p.image ? [p.image] : ['https://via.placeholder.com/300']);
-        const coverImg = imgList[0];
-        const isOut = p.stock === 'out_of_stock';
-        const isFav = wishlist.includes(p.id);
-        const delay = (index % 4) * 100;
-
-        const card = document.createElement('div');
-        card.className = "luxury-card bg-white rounded-2xl border border-[#F0E6E2] overflow-hidden flex flex-col justify-between cursor-pointer relative";
-        card.setAttribute('data-aos', 'fade-up');
-        card.setAttribute('data-aos-delay', delay.toString());
-
-        card.innerHTML = `
-          <!-- Wishlist Heart Button -->
-          <button onclick="toggleWishlist('${p.id}', event)" class="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center shadow-md transition active:scale-90">
-            <i class="fa-solid fa-heart ${isFav ? 'text-red-500' : 'text-gray-300'}"></i>
-          </button>
-
-          <div onclick="openProductDetails('${p.id}')">
-            <div class="relative overflow-hidden bg-[#FAF8F5]">
-              ${disc > 0 ? `<div class="absolute top-2 left-2 bg-[#B76E79] text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10 shadow-sm">${disc}% OFF</div>` : ''}
-              ${isOut ? `<div class="absolute bottom-2 left-2 bg-gray-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-md z-10">Stock Out</div>` : ''}
-              <img src="${coverImg}" class="w-full h-44 md:h-52 object-cover transition duration-700 hover:scale-110" onerror="this.src='https://via.placeholder.com/300'">
-            </div>
-            <div class="p-3">
-              <span class="text-[9px] text-[#B76E79] font-bold uppercase tracking-wider">${p.category || 'Jewelry'}</span>
-              <h3 class="font-bold text-[#2C2727] text-xs md:text-sm truncate mt-0.5 hover:text-[#873E48] transition">${p.title}</h3>
-            </div>
-          </div>
-          <div class="p-3 border-t border-[#F7EFEB] bg-[#FCFAF8] flex items-center justify-between">
-            <div>
-              ${disc > 0 ? `<span class="text-gray-400 line-through text-[10px] block">৳${p.price}</span>` : ''}
-              <span class="text-[#873E48] font-bold text-sm md:text-base">৳${newPrice}</span>
-            </div>
-            <button onclick="openProductDetails('${p.id}')" class="bg-[#873E48] hover:bg-[#6e3038] text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition shadow-sm active:scale-95">
-              ${trans[currentLang].orderBtn}
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
+      products.forEach((p) => {
+        grid.appendChild(createProductCardHTML(p));
       });
-
-      AOS.refresh();
     }
 
-    // ফুল-স্ক্রিন প্রোডাক্ট পেজ ওপেন
-    window.openProductDetails = function(id) {
+    // কোয়ান্টিটি পরিবর্তন ও মোট দাম হিসাব
+    window.changeQuantity = function(delta) {
+      if (!activeProduct) return;
+      selectedQty = Math.max(1, selectedQty + delta);
+      document.getElementById('qtyValue').textContent = selectedQty;
+      updateCalculatedTotal();
+    };
+
+    function updateCalculatedTotal() {
+      if (!activeProduct) return;
+      const disc = parseInt(activeProduct.discount || 0);
+      const unitPrice = disc > 0 ? Math.round(activeProduct.price - (activeProduct.price * disc / 100)) : activeProduct.price;
+      const total = unitPrice * selectedQty;
+      document.getElementById('totalCalculatedPrice').textContent = `৳${total}`;
+    }
+
+    // ডেডিকেটেড প্রোডাক্ট ডিটেইলস পেজ ওপেন
+    window.openProductDetails = function(id, updateHistory = true) {
       activeProduct = allProducts.find(p => p.id === id);
       if (!activeProduct) return;
 
-      window.location.hash = `product-${id}`;
+      if (updateHistory) {
+        window.location.hash = `product-${id}`;
+      }
+
       const item = activeProduct;
+      selectedQty = 1;
+      document.getElementById('qtyValue').textContent = '1';
+
       const imgList = item.images || (item.image ? [item.image] : ['https://via.placeholder.com/400']);
       const disc = parseInt(item.discount || 0);
       const newPrice = disc > 0 ? Math.round(item.price - (item.price * disc / 100)) : item.price;
+      const savedAmount = item.price - newPrice;
 
-      document.getElementById('modalTitle').textContent = item.title;
-      document.getElementById('modalDescription').textContent = item.description || '';
-      document.getElementById('modalCurrentPrice').textContent = `৳${newPrice}`;
+      // ব্রেডক্রাম্ব ও ব্যাজসমূহ
+      document.getElementById('breadcrumbCat').textContent = item.category || 'Product';
+      document.getElementById('breadcrumbTitle').textContent = item.title;
+      document.getElementById('pageCategoryBadge').textContent = item.category || 'Collection';
+      document.getElementById('pageProductCode').textContent = `Code: #${item.sku || item.id.slice(-6).toUpperCase()}`;
 
-      updateModalWishlistBtn();
+      document.getElementById('pageTitle').textContent = item.title;
+      document.getElementById('pageDescription').textContent = item.description || 'Premium quality product with fast home delivery all over Bangladesh.';
+      document.getElementById('pageCurrentPrice').textContent = `৳${newPrice}`;
 
-      const stockBadge = document.getElementById('modalStockBadge');
+      updateCalculatedTotal();
+      updatePageWishlistBtn();
+
+      // স্টক ব্যাজ
+      const stockBadge = document.getElementById('pageStockBadge');
+      const orderBtn = document.getElementById('orderActionBtn');
       if (item.stock === 'out_of_stock') {
-        stockBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-lg bg-red-100 text-red-600';
+        stockBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-red-100 text-red-600';
         stockBadge.textContent = 'Stock Out';
+        orderBtn.classList.add('opacity-70');
       } else {
-        stockBadge.className = 'text-xs font-bold px-2.5 py-0.5 rounded-lg bg-green-100 text-green-700';
+        stockBadge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-700';
         stockBadge.textContent = 'In Stock';
+        orderBtn.classList.remove('opacity-70');
       }
 
-      const discBadge = document.getElementById('modalDiscountBadge');
-      const oldPrice = document.getElementById('modalOldPrice');
+      // ডিসকাউন্ট ও সাশ্রয় ব্যাজ
+      const discBadge = document.getElementById('pageDiscountBadge');
+      const oldPrice = document.getElementById('pageOldPrice');
+      const saveBadge = document.getElementById('pageSaveBadge');
       if (disc > 0) {
         discBadge.textContent = `${disc}% OFF`;
         discBadge.classList.remove('hidden');
         oldPrice.textContent = `৳${item.price}`;
         oldPrice.classList.remove('hidden');
+        saveBadge.textContent = `Save ৳${savedAmount}`;
+        saveBadge.classList.remove('hidden');
       } else {
         discBadge.classList.add('hidden');
         oldPrice.classList.add('hidden');
+        saveBadge.classList.add('hidden');
       }
 
-      // সাইজ অপশন
+      // সাইজ / ভ্যারিয়েন্ট অপশন
       const sizeContainer = document.getElementById('sizeContainer');
       const sizeOptions = document.getElementById('sizeOptions');
       sizeOptions.innerHTML = '';
@@ -666,11 +924,38 @@
         sizeContainer.classList.add('hidden');
       }
 
-      // স্লাইডার এবং ইন্টারঅ্যাক্টিভ জুম লজিক
+      // কালার অপশন (যদি ডাটাবেজে থাকে)
+      const colorContainer = document.getElementById('colorContainer');
+      const colorOptions = document.getElementById('colorOptions');
+      colorOptions.innerHTML = '';
+      selectedColor = '';
+
+      if (item.colors && item.colors.length > 0) {
+        colorContainer.classList.remove('hidden');
+        item.colors.forEach((clr, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = clr;
+          btn.className = `px-4 py-2 border rounded-xl text-xs font-bold ${idx === 0 ? 'bg-[#873E48] text-white border-[#873E48]' : 'bg-white border-[#EBDCD6] text-gray-700'} transition active:scale-95`;
+          if (idx === 0) selectedColor = clr;
+
+          btn.onclick = () => {
+            selectedColor = clr;
+            Array.from(colorOptions.children).forEach(b => b.className = 'px-4 py-2 border rounded-xl text-xs font-bold bg-white border-[#EBDCD6] text-gray-700');
+            btn.className = 'px-4 py-2 border rounded-xl text-xs font-bold bg-[#873E48] text-white border-[#873E48]';
+          };
+          colorOptions.appendChild(btn);
+        });
+      } else {
+        colorContainer.classList.add('hidden');
+      }
+
+      // স্লাইডার, থাম্বনেইল এবং ইন্টারঅ্যাক্টিভ জুম
       const slider = document.getElementById('carouselSlider');
       const dots = document.getElementById('carouselDots');
+      const thumbs = document.getElementById('thumbnailContainer');
       slider.innerHTML = '';
       dots.innerHTML = '';
+      thumbs.innerHTML = '';
 
       imgList.forEach((url, i) => {
         const slide = document.createElement('div');
@@ -681,7 +966,6 @@
         img.className = 'w-full h-full object-contain p-2 zoom-img';
         img.onerror = () => { img.src = 'https://via.placeholder.com/400'; };
 
-        // মাউস জুম এফেক্ট
         slide.onmousemove = (e) => {
           const rect = slide.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -701,6 +985,14 @@
           const dot = document.createElement('div');
           dot.className = `w-2 h-2 rounded-full transition-all ${i === 0 ? 'bg-[#873E48] w-4' : 'bg-gray-300'}`;
           dots.appendChild(dot);
+
+          const thumbBtn = document.createElement('button');
+          thumbBtn.className = `w-16 h-16 rounded-xl overflow-hidden border-2 shrink-0 transition ${i === 0 ? 'border-[#873E48] scale-105 shadow-sm' : 'border-[#EBDCD6] opacity-70 hover:opacity-100'}`;
+          thumbBtn.innerHTML = `<img src="${url}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/100'">`;
+          thumbBtn.onclick = () => {
+            slider.scrollTo({ left: slider.offsetWidth * i, behavior: 'smooth' });
+          };
+          thumbs.appendChild(thumbBtn);
         }
       });
 
@@ -709,26 +1001,66 @@
         Array.from(dots.children).forEach((dot, i) => {
           dot.className = (i === index) ? 'w-4 h-2 bg-[#873E48] rounded-full transition-all' : 'w-2 h-2 bg-gray-300 rounded-full transition-all';
         });
+        Array.from(thumbs.children).forEach((th, i) => {
+          th.className = (i === index) 
+            ? 'w-16 h-16 rounded-xl overflow-hidden border-2 shrink-0 transition border-[#873E48] scale-105 shadow-sm' 
+            : 'w-16 h-16 rounded-xl overflow-hidden border-2 shrink-0 transition border-[#EBDCD6] opacity-70 hover:opacity-100';
+        });
       };
 
-      const pageModal = document.getElementById('productDetailsModal');
-      pageModal.classList.remove('hidden');
-      pageModal.scrollTop = 0;
-      document.body.classList.add('overflow-hidden');
+      // রিলেটেড প্রোডাক্ট রেন্ডার
+      renderRelatedProducts(item);
+
+      // হোমপেজ লুকিয়ে প্রোডাক্ট পেজ দেখানো
+      document.getElementById('homePageView').classList.add('hidden');
+      document.getElementById('productPageView').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    window.closeProductDetails = function() {
-      document.getElementById('productDetailsModal').classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-      history.pushState("", document.title, window.location.pathname + window.location.search);
+    function renderRelatedProducts(currentItem) {
+      const relatedSec = document.getElementById('relatedProductsSection');
+      const relatedGrid = document.getElementById('relatedGrid');
+      relatedGrid.innerHTML = '';
+
+      const related = allProducts.filter(p => p.id !== currentItem.id && p.category === currentItem.category).slice(0, 4);
+      const fallback = related.length > 0 ? related : allProducts.filter(p => p.id !== currentItem.id).slice(0, 4);
+
+      if (fallback.length === 0) {
+        relatedSec.classList.add('hidden');
+        return;
+      }
+
+      relatedSec.classList.remove('hidden');
+      fallback.forEach(p => {
+        relatedGrid.appendChild(createProductCardHTML(p));
+      });
+    }
+
+    window.closeProductPage = function(e) {
+      if (e) e.preventDefault();
+      document.getElementById('productPageView').classList.add('hidden');
+      document.getElementById('homePageView').classList.remove('hidden');
+      activeProduct = null;
+      if (window.location.hash.startsWith('#product-')) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    function checkUrlHashForProduct() {
+    function checkUrlForProduct() {
       if (window.location.hash.startsWith('#product-')) {
         const prodId = window.location.hash.replace('#product-', '');
-        openProductDetails(prodId);
+        openProductDetails(prodId, false);
+      } else {
+        document.getElementById('productPageView').classList.add('hidden');
+        document.getElementById('homePageView').classList.remove('hidden');
       }
     }
+
+    // মোবাইলের ব্যাক বাটন সাপোর্ট
+    window.addEventListener('hashchange', () => {
+      checkUrlForProduct();
+    });
 
     // শেয়ার ফাংশনালিটিসমূহ
     window.shareCurrentProduct = function() {
@@ -737,7 +1069,7 @@
       if (navigator.share) {
         navigator.share({
           title: activeProduct.title,
-          text: `Check out this exquisite jewelry from Rupelia: ${activeProduct.title}`,
+          text: `Check out this product on Rupelia: ${activeProduct.title}`,
           url: url
         }).catch(() => {});
       } else {
@@ -748,7 +1080,7 @@
     window.shareToWhatsApp = function() {
       if (!activeProduct) return;
       const url = `${window.location.origin}${window.location.pathname}#product-${activeProduct.id}`;
-      const msg = `Check out this exquisite jewelry on Rupelia: *${activeProduct.title}*\nPrice: ৳${activeProduct.price}\nView details: ${url}`;
+      const msg = `Check out this product on Rupelia: *${activeProduct.title}*\nPrice: ৳${activeProduct.price}\nView details: ${url}`;
       window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
     };
 
@@ -771,21 +1103,30 @@
       }, 2500);
     }
 
-    // সরাসরি হোয়াটসঅ্যাপ অর্ডার
+    // সরাসরি হোয়াটসঅ্যাপ অর্ডার (নতুন নাম্বারে সম্পূর্ণ ডিটেইলসসহ)
     window.submitDirectWhatsAppOrder = function() {
       if (!activeProduct) return;
       const disc = parseInt(activeProduct.discount || 0);
-      const finalPrice = disc > 0 ? Math.round(activeProduct.price - (activeProduct.price * disc / 100)) : activeProduct.price;
+      const unitPrice = disc > 0 ? Math.round(activeProduct.price - (activeProduct.price * disc / 100)) : activeProduct.price;
+      const totalPrice = unitPrice * selectedQty;
+      const prodCode = activeProduct.sku || activeProduct.id.slice(-6).toUpperCase();
+      const prodLink = `${window.location.origin}${window.location.pathname}#product-${activeProduct.id}`;
 
       const orderMsg = `*NEW ORDER - RUPELIA*%0A` +
         `--------------------------%0A` +
         `*Product:* ${activeProduct.title}%0A` +
-        `*Price:* ৳${finalPrice}%0A` +
-        (selectedSize ? `*Selected Size:* ${selectedSize}%0A` : '') +
+        `*Code:* #${prodCode}%0A` +
+        `*Category:* ${activeProduct.category || 'N/A'}%0A` +
+        (selectedSize ? `*Size/Option:* ${selectedSize}%0A` : '') +
+        (selectedColor ? `*Color:* ${selectedColor}%0A` : '') +
+        `*Quantity:* ${selectedQty}%0A` +
+        `*Unit Price:* ৳${unitPrice}%0A` +
+        `*Total Price:* ৳${totalPrice}%0A` +
+        `*Product Link:* ${encodeURIComponent(prodLink)}%0A` +
         `--------------------------%0A` +
-        `Hello, I would like to order this item. Please let me know the delivery process.`;
+        `Hello, I want to order this product. Please confirm my order.`;
 
-      window.open(`https://wa.me/8801619626988?text=${orderMsg}`, '_blank');
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${orderMsg}`, '_blank');
     };
   </script>
 </body>
