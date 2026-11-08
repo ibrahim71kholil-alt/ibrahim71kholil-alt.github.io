@@ -3,122 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rupelia Admin - Advanced Pro Dashboard</title>
+  <title>Rupelia Admin - Dropshipping Pro Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+  <style>
+    body {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
 </head>
 <body class="bg-gray-100 min-h-screen text-gray-800 p-4 md:p-8">
 
-  <!-- সিকিউরিটি স্ক্রিন -->
+  <!-- সিকিউরিটি লগইন স্ক্রিন -->
   <div id="loginScreen" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
-      <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+      <div class="w-16 h-16 bg-pink-100 text-[#873E48] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
         <i class="fa-solid fa-lock"></i>
       </div>
       <h2 class="text-2xl font-bold text-gray-800 mb-1">অ্যাডমিন লগইন</h2>
-      <p class="text-xs text-gray-500 mb-6">সিকিউরিটি পাসওয়ার্ড দিন</p>
+      <p class="text-xs text-gray-500 mb-6">RUPELIA ড্রপশিপিং ড্যাশবোর্ডে প্রবেশ করতে পাসওয়ার্ড দিন</p>
       <form id="loginForm" class="space-y-4">
-        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-center text-lg">
-        <p id="loginError" class="text-red-500 text-xs hidden font-medium">ভুল পাসওয়ার্ড!</p>
-        <button type="submit" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 rounded-xl transition">লগইন করুন</button>
+        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড" required class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#873E48] outline-none text-center text-lg">
+        <p id="loginError" class="text-red-500 text-xs hidden font-medium">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।</p>
+        <button type="submit" class="w-full bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-3 rounded-xl transition">লগইন করুন</button>
       </form>
     </div>
   </div>
 
-  <!-- ড্যাশবোর্ড -->
-  <div id="adminDashboard" class="hidden max-w-5xl mx-auto space-y-6">
+  <!-- মূল ড্যাশবোর্ড -->
+  <div id="adminDashboard" class="hidden max-w-6xl mx-auto space-y-6">
     
-    <div class="flex justify-between items-center bg-white p-5 rounded-2xl shadow-sm border">
-      <div>
-        <h1 class="text-2xl font-bold text-pink-600">RUPELIA Pro Admin</h1>
-        <p class="text-xs text-gray-500">প্রোডাক্ট, ক্যাটাগরি, সাইজ ও স্টক ম্যানেজমেন্ট</p>
+    <!-- টপ হেডার -->
+    <div class="flex flex-wrap justify-between items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-[#FAF0EC] text-[#873E48] flex items-center justify-center text-xl font-bold border border-[#E8D5CE]">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-[#873E48]">RUPELIA Pro Admin</h1>
+          <p class="text-xs text-gray-500">ড্রপশিপিং প্রোডাক্ট, ক্যাটাগরি, ভ্যারিয়েন্ট ও স্টক ম্যানেজমেন্ট</p>
+        </div>
       </div>
       <div class="flex items-center gap-2">
-        <a href="index.html" target="_blank" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg font-semibold border">শপ দেখুন</a>
-        <button onclick="logout()" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-3 py-2 rounded-lg font-semibold border border-red-200">লগআউট</button>
+        <a href="index.html" target="_blank" class="text-xs bg-[#FAF0EC] hover:bg-[#F3E3DD] text-[#873E48] px-4 py-2.5 rounded-xl font-bold border border-[#E8D5CE] flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-up-right-from-square"></i> লাইভ শপ দেখুন
+        </a>
+        <button onclick="logout()" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2.5 rounded-xl font-bold border border-red-200 flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-power-off"></i> লগআউট
+        </button>
       </div>
     </div>
 
-    <!-- প্রোডাক্ট ফর্ম -->
+    <!-- কুইক স্ট্যাটাস কার্ড -->
+    <div class="grid grid-cols-3 gap-3 md:gap-5">
+      <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg"><i class="fa-solid fa-boxes-stacked"></i></div>
+        <div>
+          <p class="text-xs text-gray-500">মোট প্রোডাক্ট</p>
+          <h3 id="statTotal" class="text-xl font-bold text-gray-800">0</h3>
+        </div>
+      </div>
+      <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-lg"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+          <p class="text-xs text-gray-500">স্টকে আছে</p>
+          <h3 id="statInStock" class="text-xl font-bold text-green-600">0</h3>
+        </div>
+      </div>
+      <div class="bg-white p-4 rounded-2xl border shadow-sm flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center text-lg"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div>
+          <p class="text-xs text-gray-500">স্টক আউট</p>
+          <h3 id="statOutStock" class="text-xl font-bold text-red-500">0</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- প্রোডাক্ট অ্যাড / এডিট ফর্ম -->
     <div class="bg-white p-6 rounded-2xl shadow-sm border">
-      <div class="flex justify-between items-center mb-4 border-b pb-3">
+      <div class="flex justify-between items-center mb-5 border-b pb-3">
         <h2 id="formHeader" class="text-lg font-bold text-gray-800 flex items-center gap-2">
-          <i class="fa-solid fa-plus-circle text-pink-600"></i> নতুন প্রোডাক্ট যুক্ত করুন
+          <i class="fa-solid fa-plus-circle text-[#873E48]"></i> নতুন প্রোডাক্ট যুক্ত করুন
         </h2>
-        <button id="cancelEditBtn" onclick="resetFormState()" class="hidden text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1.5 rounded-lg font-bold">
-          এডিট বাতিল করুন
+        <button id="cancelEditBtn" type="button" onclick="resetFormState()" class="hidden text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 px-3.5 py-1.5 rounded-lg font-bold transition">
+          <i class="fa-solid fa-xmark mr-1"></i> এডিট বাতিল করুন
         </button>
       </div>
 
       <form id="productForm" class="space-y-4">
         <input type="hidden" id="editProductId" value="">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">প্রোডাক্টের নাম *</label>
-            <input type="text" id="title" required placeholder="যেমন: Silk Thread Glass Bangles" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+        <!-- নাম, ক্যাটাগরি ও প্রোডাক্ট কোড -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div class="md:col-span-6">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">প্রোডাক্টের নাম (Title) *</label>
+            <input type="text" id="title" required placeholder="যেমন: Luxury Waterproof Chronograph Watch" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm">
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">ক্যাটাগরি *</label>
-            <select id="category" required class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm bg-white">
-              <option value="Glass Bangles">Glass Bangles (কাচের চুড়ি)</option>
-              <option value="Metal Bangles">Metal Bangles (মেটাল চুড়ি)</option>
-              <option value="Jewelry Set">Jewelry Set (জুয়েলারি সেট)</option>
-              <option value="Bracelets">Bracelets (ব্রেসলেট)</option>
+          <div class="md:col-span-4">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">ড্রপশিপিং ক্যাটাগরি *</label>
+            <select id="category" required class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm bg-white font-medium">
+              <option value="Watches">Watches & Smartwatches (ঘড়ি ও স্মার্টওয়াচ)</option>
+              <option value="Gadgets">Gadgets & Electronics (গ্যাজেট ও ইলেকট্রনিক্স)</option>
+              <option value="Fashion">Fashion & Apparel (ফ্যাশন ও পোশাক)</option>
+              <option value="Jewelry">Jewelry & Ornaments (জুয়েলারি ও অর্নামেন্টস)</option>
+              <option value="Bags & Shoes">Bags & Footwear (ব্যাগ ও জুতা)</option>
+              <option value="Home & Kitchen">Home & Kitchen (হোম ও কিচেন)</option>
+              <option value="Beauty">Beauty & Personal Care (বিউটি ও স্কিনকেয়ার)</option>
+              <option value="Health & Fitness">Health & Fitness (হেলথ ও ফিটনেস)</option>
+              <option value="Kids & Toys">Kids & Toys (শিশু ও খেলনা)</option>
+              <option value="Islamic">Islamic Corner (ইসলামিক কর্নার)</option>
+              <option value="Combo Offer">Combo & Gifts (কম্বো ও গিফট)</option>
               <option value="Other">Other (অন্যান্য)</option>
             </select>
           </div>
+          <div class="md:col-span-2">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">প্রোডাক্ট কোড (SKU)</label>
+            <input type="text" id="sku" placeholder="যেমন: RP-105" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm font-mono">
+          </div>
         </div>
 
+        <!-- দাম, ডিসকাউন্ট ও স্টক স্ট্যাটাস -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">মূল দাম (টাকা) *</label>
-            <input type="number" id="price" required placeholder="যেমন: 450" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">রেগুলার দাম (টাকা) *</label>
+            <input type="number" id="price" required placeholder="যেমন: 1250" oninput="calculatePreviewPrice()" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm">
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">ডিসকাউন্ট (%) - অপশনাল</label>
-            <input type="number" id="discount" placeholder="যেমন: 15" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <input type="number" id="discount" placeholder="যেমন: 20" min="0" max="99" oninput="calculatePreviewPrice()" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm">
+            <p id="finalPricePreview" class="text-[11px] text-[#873E48] font-bold mt-1 hidden"></p>
           </div>
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">স্টক স্ট্যাটাস *</label>
-            <select id="stock" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm bg-white">
+            <select id="stock" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm bg-white">
               <option value="in_stock">In Stock (স্টকে আছে)</option>
               <option value="out_of_stock">Stock Out (স্টক শেষ)</option>
             </select>
           </div>
         </div>
 
+        <!-- সাইজ/ভ্যারিয়েন্ট এবং কালার অপশন -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">সাইজসমূহ (কমা দিয়ে লিখুন)</label>
-            <input type="text" id="sizes" placeholder="যেমন: 2.4, 2.6, 2.8" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">সাইজ / ভ্যারিয়েন্ট (কমা দিয়ে লিখুন - অপশনাল)</label>
+            <input type="text" id="sizes" placeholder="যেমন: M, L, XL অথবা 2.4, 2.6, 2.8" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">সংক্ষিপ্ত বিবরণ *</label>
-            <input type="text" id="description" required placeholder="যেমন: Premium handcrafted glass bangles" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm">
+            <label class="block text-xs font-semibold text-gray-600 mb-1">কালারসমূহ (কমা দিয়ে লিখুন - অপশনাল)</label>
+            <input type="text" id="colors" placeholder="যেমন: Black, Silver, Rose Gold" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm">
           </div>
         </div>
 
+        <!-- প্রোডাক্টের সম্পূর্ণ বিবরণ (Multi-line Textarea) -->
         <div>
           <label class="block text-xs font-semibold text-gray-600 mb-1">
-            ছবির সরাসরি লিংক (প্রতি লাইনে ১টি করে URL দিন) *
+            প্রোডাক্টের সম্পূর্ণ বিবরণ ও স্পেসিফিকেশন (প্রোডাক্ট পেজে হুবহু দেখাবে) *
           </label>
-          <textarea id="images" required rows="3" placeholder="https://i.ibb.co/image1.jpg&#10;https://i.ibb.co/image2.jpg" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-pink-500 text-sm font-mono"></textarea>
+          <textarea id="description" required rows="4" placeholder="প্রোডাক্টের সব বৈশিষ্ট্য এখানে লিখুন...&#10;• 100% High Quality Material&#10;• Water Resistant&#10;• Premium Box Packaging" class="w-full p-3 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm leading-relaxed"></textarea>
         </div>
 
-        <button type="submit" id="saveBtn" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md shadow-pink-200">
-          প্রোডাক্ট সেভ করুন
+        <!-- ছবির লিংক ও লাইভ প্রিভিউ -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-600 mb-1">
+            ছবির সরাসরি লিংক (প্রতি লাইনে ১টি করে Image URL দিন - একাধিক ছবি দিলে গ্যালারি স্লাইডার হবে) *
+          </label>
+          <textarea id="images" required rows="3" oninput="previewImages()" placeholder="https://i.ibb.co/image1.jpg&#10;https://i.ibb.co/image2.jpg" class="w-full p-2.5 border rounded-xl outline-none focus:ring-2 focus:ring-[#873E48] text-sm font-mono"></textarea>
+          <div id="imagePreviewBox" class="flex gap-2 mt-2 overflow-x-auto py-1"></div>
+        </div>
+
+        <button type="submit" id="saveBtn" class="bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-3 px-8 rounded-xl transition shadow-md">
+          <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> প্রোডাক্ট সেভ করুন
         </button>
       </form>
     </div>
 
-    <!-- প্রোডাক্ট লিস্ট -->
-    <div class="bg-white p-6 rounded-2xl shadow-sm border">
-      <h2 class="text-lg font-bold text-gray-800 mb-4 border-b pb-3 flex items-center gap-2">
-        <i class="fa-solid fa-boxes-stacked text-pink-600"></i> বর্তমান প্রোডাক্টসমূহ
-      </h2>
+    <!-- বর্তমান প্রোডাক্ট লিস্ট ও সার্চ/ফিল্টার -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border space-y-4">
+      <div class="flex flex-wrap justify-between items-center gap-3 border-b pb-4">
+        <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+          <i class="fa-solid fa-boxes-stacked text-[#873E48]"></i> বর্তমান প্রোডাক্টসমূহ
+        </h2>
+        
+        <!-- অ্যাডমিন সার্চ ও ক্যাটাগরি ফিল্টার -->
+        <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+          <input type="text" id="adminSearch" oninput="renderAdminProducts()" placeholder="নাম বা কোড দিয়ে খুঁজুন..." class="px-3 py-2 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-[#873E48] flex-1 sm:w-52">
+          <select id="adminCatFilter" onchange="renderAdminProducts()" class="px-3 py-2 border rounded-xl text-xs outline-none focus:ring-2 focus:ring-[#873E48] bg-white">
+            <option value="All">সব ক্যাটাগরি</option>
+            <option value="Watches">Watches & Smartwatches</option>
+            <option value="Gadgets">Gadgets & Electronics</option>
+            <option value="Fashion">Fashion & Apparel</option>
+            <option value="Jewelry">Jewelry & Ornaments</option>
+            <option value="Bags & Shoes">Bags & Footwear</option>
+            <option value="Home & Kitchen">Home & Kitchen</option>
+            <option value="Beauty">Beauty & Personal Care</option>
+            <option value="Health & Fitness">Health & Fitness</option>
+            <option value="Kids & Toys">Kids & Toys</option>
+            <option value="Islamic">Islamic Corner</option>
+            <option value="Combo Offer">Combo & Gifts</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
       <div id="productList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <p class="text-gray-400 text-sm">লোড হচ্ছে...</p>
       </div>
@@ -166,15 +258,49 @@
     const productsRef = db.ref('products');
     let productsDataStore = {};
 
+    // ডিসকাউন্ট পরবর্তী দাম হিসাব
+    function calculatePreviewPrice() {
+      const price = parseFloat(document.getElementById('price').value || 0);
+      const disc = parseInt(document.getElementById('discount').value || 0);
+      const previewEl = document.getElementById('finalPricePreview');
+
+      if (price > 0 && disc > 0) {
+        const finalPrice = Math.round(price - (price * disc / 100));
+        previewEl.textContent = `কাস্টমার প্রাইস হবে: ৳${finalPrice} (সাশ্রয় ৳${price - finalPrice})`;
+        previewEl.classList.remove('hidden');
+      } else {
+        previewEl.classList.add('hidden');
+      }
+    }
+
+    // ছবির লিংক প্রিভিউ
+    function previewImages() {
+      const rawImages = document.getElementById('images').value.trim().split('\n');
+      const urls = rawImages.map(u => u.trim()).filter(u => u.length > 0);
+      const box = document.getElementById('imagePreviewBox');
+      box.innerHTML = '';
+
+      urls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = "w-14 h-14 object-cover rounded-lg border bg-gray-50 shrink-0";
+        img.onerror = () => { img.src = 'https://via.placeholder.com/80?text=Invalid'; };
+        box.appendChild(img);
+      });
+    }
+
+    // প্রোডাক্ট সেভ ও আপডেট
     document.getElementById('productForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const editId = document.getElementById('editProductId').value;
       const title = document.getElementById('title').value.trim();
       const category = document.getElementById('category').value;
+      const sku = document.getElementById('sku').value.trim();
       const price = parseFloat(document.getElementById('price').value);
       const discount = parseInt(document.getElementById('discount').value || 0);
       const stock = document.getElementById('stock').value;
       const sizes = document.getElementById('sizes').value.split(',').map(s => s.trim()).filter(s => s.length > 0);
+      const colors = document.getElementById('colors').value.split(',').map(c => c.trim()).filter(c => c.length > 0);
       const description = document.getElementById('description').value.trim();
       
       const rawImages = document.getElementById('images').value.trim().split('\n');
@@ -188,10 +314,12 @@
       const productPayload = {
         title,
         category,
+        sku,
         price,
         discount,
         stock,
         sizes,
+        colors,
         description,
         image: images[0],
         images: images,
@@ -206,50 +334,123 @@
       } else {
         productPayload.createdAt = Date.now();
         productsRef.push().set(productPayload).then(() => {
-          alert('নতুন প্রোডাক্ট যোগ করা হয়েছে!');
+          alert('নতুন প্রোডাক্ট সফলভাবে যোগ করা হয়েছে!');
           resetFormState();
         });
       }
     });
 
+    // ডাটাবেজ থেকে প্রোডাক্ট লোড
     productsRef.on('value', (snapshot) => {
+      productsDataStore = snapshot.val() || {};
+      updateStats();
+      renderAdminProducts();
+    });
+
+    function updateStats() {
+      const keys = Object.keys(productsDataStore);
+      let inStockCount = 0;
+      let outStockCount = 0;
+
+      keys.forEach(id => {
+        if (productsDataStore[id].stock === 'out_of_stock') {
+          outStockCount++;
+        } else {
+          inStockCount++;
+        }
+      });
+
+      document.getElementById('statTotal').textContent = keys.length;
+      document.getElementById('statInStock').textContent = inStockCount;
+      document.getElementById('statOutStock').textContent = outStockCount;
+    }
+
+    function renderAdminProducts() {
       const productList = document.getElementById('productList');
       productList.innerHTML = '';
-      productsDataStore = snapshot.val() || {};
 
-      if (!snapshot.exists()) {
-        productList.innerHTML = '<p class="text-gray-400 text-sm">কোনো প্রোডাক্ট নেই।</p>';
+      const searchQ = (document.getElementById('adminSearch').value || '').toLowerCase().trim();
+      const catFilter = document.getElementById('adminCatFilter').value;
+
+      const keys = Object.keys(productsDataStore).reverse();
+      if (keys.length === 0) {
+        productList.innerHTML = '<p class="text-gray-400 text-sm col-span-full text-center py-6">কোনো প্রোডাক্ট নেই।</p>';
         return;
       }
 
-      Object.keys(productsDataStore).forEach((id) => {
+      const filteredKeys = keys.filter(id => {
+        const item = productsDataStore[id];
+        const matchCat = (catFilter === 'All' || item.category === catFilter);
+        const code = item.sku || id.slice(-6);
+        const matchSearch = (item.title || '').toLowerCase().includes(searchQ) ||
+                            (code || '').toLowerCase().includes(searchQ) ||
+                            (item.category || '').toLowerCase().includes(searchQ);
+        return matchCat && matchSearch;
+      });
+
+      if (filteredKeys.length === 0) {
+        productList.innerHTML = '<p class="text-gray-400 text-sm col-span-full text-center py-6">সার্চের সাথে মিলে এমন কোনো প্রোডাক্ট পাওয়া যায়নি।</p>';
+        return;
+      }
+
+      filteredKeys.forEach((id) => {
         const item = productsDataStore[id];
         const imgList = item.images || (item.image ? [item.image] : []);
         const firstImg = imgList[0] || 'https://via.placeholder.com/100';
+        const disc = parseInt(item.discount || 0);
+        const sellPrice = disc > 0 ? Math.round(item.price - (item.price * disc / 100)) : item.price;
+        const prodCode = item.sku || id.slice(-6).toUpperCase();
+        const isOut = item.stock === 'out_of_stock';
 
         const card = document.createElement('div');
-        card.className = "border rounded-xl p-3 flex gap-3 items-center bg-gray-50";
+        card.className = "border rounded-xl p-3.5 flex gap-3.5 items-center bg-gray-50 hover:bg-white transition shadow-sm";
         card.innerHTML = `
-          <img src="${firstImg}" class="w-16 h-16 object-cover rounded-lg border bg-white" onerror="this.src='https://via.placeholder.com/100'">
+          <img src="${firstImg}" class="w-16 h-16 object-cover rounded-xl border bg-white shrink-0" onerror="this.src='https://via.placeholder.com/100'">
           <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-1.5">
-              <span class="text-[10px] bg-pink-100 text-pink-700 px-1.5 py-0.5 rounded font-bold">${item.category || 'Other'}</span>
-              ${item.stock === 'out_of_stock' ? '<span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold">Stock Out</span>' : '<span class="text-[10px] bg-green-100 text-green-600 px-1.5 py-0.5 rounded font-bold">In Stock</span>'}
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="text-[10px] bg-[#FAF0EC] text-[#873E48] border border-[#E8D5CE] px-2 py-0.5 rounded font-bold">${item.category || 'Other'}</span>
+              <span class="text-[10px] bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded font-mono">#${prodCode}</span>
+              <button onclick="toggleQuickStock('${id}')" title="ক্লিক করে স্টক স্ট্যাটাস পরিবর্তন করুন" class="text-[10px] px-2 py-0.5 rounded font-bold cursor-pointer transition ${isOut ? 'bg-red-100 text-red-600 hover:bg-red-200' : 'bg-green-100 text-green-700 hover:bg-green-200'}">
+                ${isOut ? 'Stock Out' : 'In Stock'} <i class="fa-solid fa-repeat ml-0.5 text-[9px]"></i>
+              </button>
             </div>
             <h3 class="font-bold text-gray-800 text-sm truncate mt-1">${item.title}</h3>
             <div class="flex items-center gap-2 mt-0.5">
-              <span class="text-xs font-semibold text-pink-600">৳${item.price}</span>
-              ${item.discount > 0 ? `<span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded font-bold">${item.discount}% OFF</span>` : ''}
+              <span class="text-xs font-bold text-[#873E48]">৳${sellPrice}</span>
+              ${disc > 0 ? `<span class="text-[11px] text-gray-400 line-through">৳${item.price}</span> <span class="text-[10px] bg-red-100 text-red-600 px-1.5 py-0.2 rounded font-bold">${disc}% OFF</span>` : ''}
             </div>
           </div>
-          <div class="flex items-center gap-1">
-            <button onclick="startEdit('${id}')" class="text-blue-600 hover:bg-blue-100 p-2 rounded-lg text-sm"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button onclick="deleteProduct('${id}')" class="text-red-500 hover:bg-red-100 p-2 rounded-lg text-sm"><i class="fa-solid fa-trash-can"></i></button>
+          <div class="flex items-center gap-1 shrink-0">
+            <a href="index.html#product-${id}" target="_blank" title="প্রোডাক্ট পেজ দেখুন" class="text-gray-600 hover:bg-gray-200 p-2 rounded-lg text-sm transition">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+            <button onclick="startEdit('${id}')" title="এডিট করুন" class="text-blue-600 hover:bg-blue-100 p-2 rounded-lg text-sm transition">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button onclick="deleteProduct('${id}')" title="ডিলিট করুন" class="text-red-500 hover:bg-red-100 p-2 rounded-lg text-sm transition">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
           </div>
         `;
         productList.appendChild(card);
       });
-    });
+    }
+
+    // এক ক্লিকে ইন-স্টক বা স্টক-আউট পরিবর্তন
+    window.toggleQuickStock = function(id) {
+      const item = productsDataStore[id];
+      if (!item) return;
+      const newStock = (item.stock === 'out_of_stock') ? 'in_stock' : 'out_of_stock';
+      productsRef.child(id).update({ stock: newStock, updatedAt: Date.now() });
+    };
+
+    // পুরানো ক্যাটাগরির প্রোডাক্ট এডিট করলে সঠিক ক্যাটাগরিতে সেট করা
+    const legacyCategoryMap = {
+      'Glass Bangles': 'Jewelry',
+      'Metal Bangles': 'Jewelry',
+      'Jewelry Set': 'Jewelry',
+      'Bracelets': 'Jewelry'
+    };
 
     window.startEdit = function(id) {
       const item = productsDataStore[id];
@@ -257,19 +458,29 @@
 
       document.getElementById('editProductId').value = id;
       document.getElementById('title').value = item.title || '';
-      document.getElementById('category').value = item.category || 'Glass Bangles';
+      
+      const mappedCat = legacyCategoryMap[item.category] || item.category || 'Watches';
+      const catSelect = document.getElementById('category');
+      catSelect.value = mappedCat;
+      if (!catSelect.value) catSelect.value = 'Other';
+
+      document.getElementById('sku').value = item.sku || '';
       document.getElementById('price').value = item.price || '';
       document.getElementById('discount').value = item.discount || '';
       document.getElementById('stock').value = item.stock || 'in_stock';
       document.getElementById('sizes').value = (item.sizes || []).join(', ');
+      document.getElementById('colors').value = (item.colors || []).join(', ');
       document.getElementById('description').value = item.description || '';
 
       const imgList = item.images || (item.image ? [item.image] : []);
       document.getElementById('images').value = imgList.join('\n');
 
+      calculatePreviewPrice();
+      previewImages();
+
       document.getElementById('formHeader').innerHTML = '<i class="fa-solid fa-pen-to-square text-blue-600"></i> প্রোডাক্ট এডিট করুন';
-      document.getElementById('saveBtn').textContent = 'আপডেট সংরক্ষণ করুন';
-      document.getElementById('saveBtn').className = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition';
+      document.getElementById('saveBtn').innerHTML = '<i class="fa-solid fa-check mr-1.5"></i> আপডেট সংরক্ষণ করুন';
+      document.getElementById('saveBtn').className = 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md';
       document.getElementById('cancelEditBtn').classList.remove('hidden');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -278,14 +489,16 @@
     window.resetFormState = function() {
       document.getElementById('productForm').reset();
       document.getElementById('editProductId').value = '';
-      document.getElementById('formHeader').innerHTML = '<i class="fa-solid fa-plus-circle text-pink-600"></i> নতুন প্রোডাক্ট যুক্ত করুন';
-      document.getElementById('saveBtn').textContent = 'প্রোডাক্ট সেভ করুন';
-      document.getElementById('saveBtn').className = 'bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-md shadow-pink-200';
+      document.getElementById('finalPricePreview').classList.add('hidden');
+      document.getElementById('imagePreviewBox').innerHTML = '';
+      document.getElementById('formHeader').innerHTML = '<i class="fa-solid fa-plus-circle text-[#873E48]"></i> নতুন প্রোডাক্ট যুক্ত করুন';
+      document.getElementById('saveBtn').innerHTML = '<i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> প্রোডাক্ট সেভ করুন';
+      document.getElementById('saveBtn').className = 'bg-[#873E48] hover:bg-[#6e3038] text-white font-bold py-3 px-8 rounded-xl transition shadow-md';
       document.getElementById('cancelEditBtn').classList.add('hidden');
     };
 
     window.deleteProduct = function(id) {
-      if(confirm('আপনি কি নিশ্চিত এই প্রোডাক্টটি মুছে ফেলতে চান?')) {
+      if (confirm('আপনি কি নিশ্চিত এই প্রোডাক্টটি মুছে ফেলতে চান?')) {
         productsRef.child(id).remove();
       }
     };
